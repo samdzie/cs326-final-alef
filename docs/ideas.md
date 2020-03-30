@@ -13,9 +13,18 @@ This application is based off of a project at a hackathon that was never impleme
 
 ## Important Components
 * Images of the bathroom and possibly its layout
-* Ratings for things like accessibility, cleanliness, business, etc., which would be averages of user ratings
-* A section with information about the bathroom. These would typically be features that the bathroom may or may not have - changing tables or family stalls, for example. It would also show what gender the bathroom is marked as - netural, women's, or men's.
+* User ratings and averages
+    * Accessibility
+    * Cleanliness
+    * Traffic
+* Features
+    * Gender: neutral, women's, men's
+    * Changing tables
+    * Family stalls
+    * Paper towels
+    * Seat covers
+* Text description of location
 * A map feature to find the bathroom within a building
 * User comments
 
-
+Users will be able to log in to add, update, and favorite entries.
