@@ -7,7 +7,15 @@ Team Alef
 * Raymond Tan (@raymond98tan)
 
 ## Innovative Idea
-*The second section titled Innovative Idea which provides a brief paragraph or two describing your application and how it relates to other existing applications. If your application does not relate to an existing application then mention that.*
+Our application would be a database of bathrooms on the UMass campus, and an interface for users rate and provide information about them, similar to Yelp or IMDB. It would allow people to see where the nearest bathroom is and if it meets their requirements (such as having a changing table, being accessible to them, and so on). Ratings would be averaged and displayed.
+
+This application is based off of a project at a hackathon that was never implemented in full. https://dashboard.hackher413.com/projects/16 
 
 ## Important Components
-*The third section titled Important Components which provides a brief paragraph or two explaining the functions provided by some of the components of your final projects.*
+* Images of the bathroom and possibly its layout
+* Ratings for things like accessibility, cleanliness, business, etc., which would be averages of user ratings
+* A section with information about the bathroom. These would typically be features that the bathroom may or may not have - changing tables or family stalls, for example. It would also show what gender the bathroom is marked as - netural, women's, or men's.
+* A map feature to find the bathroom within a building
+* User comments
+
+
