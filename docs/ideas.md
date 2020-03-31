@@ -1,4 +1,4 @@
-# Application Name
+# UMass Restroom Tracker
 Team Alef
 
 ## Team Overview
