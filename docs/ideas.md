@@ -14,15 +14,19 @@ This application is based off of a project at a hackathon that was never impleme
 ## Important Components
 * Images of the bathroom and possibly its layout
 * User ratings and averages
-    * Accessibility
+    * Overall accessibility
     * Cleanliness
     * Traffic
 * Features
     * Gender: neutral, women's, men's
+    * Accessible stall
+    * Nearest breast-feeding room
     * Changing tables
     * Family stalls
     * Paper towels
     * Seat covers
+    * Sanitary product dispenser
+    * Working lock (many gender-neutral bathrooms on campus don't have this)
 * Text description of location
 * A map feature to find the bathroom within a building
 * User comments
