@@ -13,3 +13,9 @@
     * Single stall
 * Cleanliness rating
 * Additional comments
+
+## Wireframes
+### Home
+![home page wireframe](wireframes/home.png)
+### Restroom View
+![restroom view wireframe](wireframes/restroom.png)
