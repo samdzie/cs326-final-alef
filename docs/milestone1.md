@@ -23,3 +23,5 @@
 ![rating submission wireframe](wireframes/rate-page.png)
 ### Login page
 ![login wireframe](wireframes/login.png)
+### Search results page
+![Search results wireframe](wireframes/searchResults.png)
