@@ -10,6 +10,6 @@ body {
     margin-top: 10px;
     margin-bottom: 10px;
 }
-#rating{
+.rating{
     color: rgba(152, 40, 226, 0.705);
 }
