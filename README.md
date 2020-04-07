@@ -18,8 +18,8 @@ A web app to record and look up accessible restrooms at UMass Amherst. Developed
     - [ ] Additional comments
   - [ ] Search results
   - [ ] Rate bathroom view
-    - [ ] Header
-    - [ ] Ratings
+    - [x] Header
+    - [x] Ratings (non-responsive)
     - [ ] Features 
       - [ ] Gender dropdown
       - [ ] Features with checkboxes
