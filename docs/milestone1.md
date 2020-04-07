@@ -19,3 +19,7 @@
 ![home page wireframe](wireframes/home.png)
 ### Restroom View
 ![restroom view wireframe](wireframes/restroom.png)
+### Rating submission page
+![rating submission wireframe](wireframes/rate-page.png)
+### Login page
+![login wireframe](wireframes/login.png)
