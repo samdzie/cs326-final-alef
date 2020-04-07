@@ -56,31 +56,80 @@
                         <p>&#9734&#9734&#9734&#9734&#9734</p>
                     </div>
                 </div>
-            </div>
-            <div class="container">
-                <div class="row">
-                    <h2>Features of ILC 255</h2> 
-                    <!-- TODO This is also a variable in JS-->
-                </div>
-                <div class ="row">
-                    <div class="col-sm-1">
-                        <label for="choose_gender">Gender</label>
+                <div class="container">
+                    <div class="row">
+                        <h2>Features of ILC 255</h2>
+                        <!-- TODO This is also a variable in JS-->
                     </div>
-                    <div class="col-sm-1">
-                        <select name ="Gender" id="choose_gender">
-                            <option value= "Neutral">Neutral</option>
-                            <option value= "Women">Women</option>
-                            <option value= "Men">Men</option>
-                        </select>
-                    </div>    
-                </div>
-                <div class="row">
-                    <div class="col-md">
-
+                    <div class="row">
+                        <div class="col-sm-1">
+                            <label for="choose_gender">Gender</label>
+                        </div>
+                        <div class="col-md-2">
+                            <select name="Gender" id="choose_gender" class="custom-select">
+                                <option value="Neutral">Neutral</option>
+                                <option value="Women">Women</option>
+                                <option value="Men">Men</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md">
+                            <div class="custom-control custom-checkbox">
+                                <input class="custom-control-input" type="checkbox" value="" id="accessible">
+                                <label class="custom-control-label" for="accessible"> <img src="../assets/icon.png" alt="icon"> Accessible stall</label>
+                            </div>
+                        </div>
+                        <div class="col-md">
+                            <div class="custom-control custom-checkbox">
+                                <input class="custom-control-input" type="checkbox" value="" id="familystall">
+                                <label class="custom-control-label" for="familystall"> <img src="../assets/icon.png" alt="icon"> Family stall</label>
+                            </div>
+                        </div>
+                        <div class="col-md">
+                            <div class="custom-control custom-checkbox">
+                                <input class="custom-control-input" type="checkbox" value="" id="sanitaryproducts">
+                                <label class="custom-control-label" for="sanitaryproducts"> <img src="../assets/icon.png" alt="icon"> Sanitary products</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md">
+                            <div class="custom-control custom-checkbox">
+                                <input class="custom-control-input" type="checkbox" value="" id="lactationroom">
+                                <label class="custom-control-label" for="lactationroom"> <img src="../assets/icon.png" alt="icon"> Nearby lactation room</label>
+                            </div>
+                        </div>
+                        <div class="col-md">
+                            <div class="custom-control custom-checkbox">
+                                <input class="custom-control-input" type="checkbox" value="" id="papertowels">
+                                <label class="custom-control-label" for="papertowels"> <img src="../assets/icon.png" alt="icon"> Paper towels</label>
+                            </div>
+                        </div>
+                        <div class="col-md">
+                            <div class="custom-control custom-checkbox">
+                                <input class="custom-control-input" type="checkbox" value="" id="workinglock">
+                                <label class="custom-control-label" for="workinglock"> <img src="../assets/icon.png" alt="icon"> Working lock</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md">
+                            <div class="custom-control custom-checkbox">
+                                <input class="custom-control-input" type="checkbox" value="" id="changingtable">
+                                <label class="custom-control-label" for="changingtable"> <img src="../assets/icon.png" alt="icon"> Changing table</label>
+                            </div>
+                        </div>
+                        <div class="col-md">
+                            <div class="custom-control custom-checkbox">
+                                <input class="custom-control-input" type="checkbox" value="" id="seatcovers">
+                                <label class="custom-control-label" for="seatcovers"> <img src="../assets/icon.png" alt="icon"> Seat covers</label>
+                            </div>
+                        </div>
+                        <div class="col-md"></div> <!-- To keep the columns in line -->
                     </div>
                 </div>
             </div>
-            
 
         <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
