@@ -25,3 +25,9 @@
 ![login wireframe](wireframes/login.png)
 ### Search results page
 ![Search results wireframe](wireframes/searchResults.png)
+
+
+## Division of labour
+* Sam - index.html, restroom.html, and their wireframes; style.css; made the different folders and file structure
+* Ankita - login.html, update.html, and their wireframes; style.css; 
+* Raymond - results.html (merged into index.html) and its wireframe; found and added icons for the features
