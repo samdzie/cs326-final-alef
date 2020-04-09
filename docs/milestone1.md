@@ -26,6 +26,15 @@
 ### Search results page
 ![Search results wireframe](wireframes/searchResults.png)
 
+## Mockups
+### Home
+![home page mockup](mockups/home.png)
+### Restroom view
+![restroom view mockup](mockups/restroom.png)
+### Rating submission page
+![rating submission mockup](mockups/rate-page.png)
+### Login page
+![login page mockup](mockups/login.png)
 
 ## Division of labour
 * Sam - index.html, restroom.html, and their wireframes; style.css; made the different folders and file structure
