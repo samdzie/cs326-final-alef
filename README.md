@@ -7,16 +7,16 @@ A web app to record and look up accessible restrooms at UMass Amherst. Developed
 * Raymond Tan ([@raymond98tan](https://github.com/raymond98tan))
 
 ## To-Do List
-- [ ] HTML/CSS mockup
+- [x] HTML/CSS mockup
   - [x] Home
     - [x] Header
     - [x] Form
     - [x] Search results
-  - [ ] Restroom view
+  - [x] Restroom view
     - [x] Header
     - [x] Feature icons
-    - [ ] Ratings
-    - [ ] Additional comments
+    - [x] Ratings
+    - [x] Additional comments
   - [x] Rate bathroom view
     - [x] Header
     - [x] Ratings (non-responsive)
