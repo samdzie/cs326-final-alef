@@ -7,6 +7,13 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" crossorigin="anonymous">
         <link rel="stylesheet" href="style.css">
+        <style>
+            .comment {
+                background-color: white;
+                padding: 10px;
+                border: 3px solid lightgray;
+            }
+        </style>
     </head>
     <body>
         <div class="container p-3">
@@ -141,10 +148,52 @@
 
             <hr>
 
+            <div class="row">
+                <div class="col-md-2"></div>
+                <div class="col-md">
+                    <div class="row">
+                        <div class= "col-sm-4">
+                            <strong>Overall Rating</strong>
+                        </div>
+                        <div class="col-sm-1 rating">
+                            <p>&#9734&#9734&#9734&#9734&#9734</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class= "col-sm-4">
+                            <strong>Cleanliness</strong>
+                        </div>
+                        <div class="col-sm-1 rating">
+                            <p>&#9734&#9734&#9734&#9734&#9734</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class= "col-sm-4">
+                            <strong>Traffic</strong>
+                        </div> 
+                        <div class="col-sm-1 rating">
+                            <p>&#9734&#9734&#9734&#9734&#9734</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <button type="button" class="btn btn-primary float-right m-3">Rate this restroom</button>
+                </div>
+                <div class="col-md-2"></div>
+            </div>
+
             <hr>
             <div class="row">
                 <div class="col-md">
                     <h2>Additional Comments</h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xl">
+                    <div class="comment">
+                        <h3>Username</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec bibendum, tortor posuere fermentum lacinia, justo odio mattis lacus, a suscipit lacus elit a mi. Nulla facilisi. Quisque ac risus ut ipsum pulvinar gravida quis non diam. Sed cursus purus id blandit suscipit. Nunc ac gravida justo. Sed metus velit, congue non arcu sit amet, bibendum laoreet velit. Nunc feugiat sapien eu nisi volutpat lobortis non sit amet tortor. Ut ullamcorper egestas justo et interdum. Nulla eget venenatis mauris. Donec auctor tristique erat.</p>
+                    </div>
                 </div>
             </div>
         </div>
