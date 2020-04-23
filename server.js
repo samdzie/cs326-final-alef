@@ -4,6 +4,7 @@ const app = express();
 
 const port = 80;
 
+require("./routes")(app)
 app.use(express.json())
 app.use(express.static("./static"))
 
