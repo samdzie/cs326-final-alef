@@ -41,15 +41,33 @@ export class Features {
 }
 
 export class Restroom {
+    private _id: number;
     private _name: string;
     private _description: string;
     features: Features;
     comments: CommentSection;
 
-    constructor(name: string) {
-        this._name = name;
+    constructor(id: number) {
+        this._id = id;
+        this._name = "";
         this._description = "";
         this.features = new Features();
         this.comments = new CommentSection();
+    }
+
+    get name() {
+        return this._name;
+    }
+
+    set name(name: string) {
+        this._name = name;
+    }
+
+    get description() {
+        return this._description;
+    }
+
+    set description(description: string) {
+        this._description = description;
     }
 }
