@@ -14,5 +14,11 @@
     "url": "\\"
   },
   "author": "Team Alef",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "eslint": "^6.8.0"
+  }
 }
