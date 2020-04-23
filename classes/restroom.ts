@@ -12,7 +12,7 @@ export class Features {
     lock: boolean;
 
     constructor() {
-        this.gender = "Neutral";
+        this._gender = "Neutral";
         this.accessible = false;
         this.lactation = false;
         this.changing = false;
