@@ -75,6 +75,9 @@ export class Comment {
  */
 export class CommentSection {
     private _list: Array<Comment>;
+    private _averageRating: number;
+    private _averageCleanliness: number;
+    private _averageTraffic: number;
 
     constructor() {
         this._list = [];
@@ -86,6 +89,9 @@ export class CommentSection {
      */
     add(comment: Comment) {
         this._list.push(comment);
+        this.calculateAverageRating;
+        this.calculateAverageCleanliness;
+        this.calculateAverageTraffic;
     }
 
     /**
@@ -110,22 +116,22 @@ export class CommentSection {
     /**
      * Returns average overall rating across comments.
      */
-    averageRating(): number {
-        return this.average(x => x.rating);
+    private calculateAverageRating(): void {
+        this._averageRating = this.average(x => x.rating);
     }
 
     /**
      * Returns average cleanliness rating across comments.
      */
-    averageCleanliness(): number {
-        return this.average(x => x.cleanliness);
+    private calculateAverageCleanliness(): void {
+        this._averageCleanliness = this.average(x => x.cleanliness);
     }
 
     /**
      * Returns average traffic rating across comments.
      */
-    averageTraffic(): number {
-        return this.average(x => x.traffic);
+    private calculateAverageTraffic(): void {
+        this._averageTraffic = this.average(x => x.traffic);
     }
 
     /**
@@ -138,5 +144,17 @@ export class CommentSection {
             return total + next;
         });
         return sum / ratings.length;
+    }
+
+    get averageRating() {
+        return this._averageRating;
+    }
+
+    get averageCleanliness() {
+        return this._averageCleanliness;
+    }
+
+    get averageTraffic() {
+        return this._averageTraffic;
     }
 }
