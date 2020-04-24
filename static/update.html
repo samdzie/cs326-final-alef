@@ -22,9 +22,14 @@
                     <img src="../assets/map.png" alt="map">
                 </div>
                 <div class="col-md-7">
-                    <h1>ILC 255</h1>
-                    <!-- TODO Make variable in JS-->
-                    <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec bibendum, tortor posuere fermentum lacinia, justo odio mattis lacus, a suscipit lacus elit a mi. Nulla facilisi. Quisque ac risus ut ipsum pulvinar gravida quis non diam. Sed cursus purus id blandit suscipit. Nunc ac gravida justo. Sed metus velit, congue non arcu sit amet, bibendum laoreet velit. Nunc feugiat sapien eu nisi volutpat lobortis non sit amet tortor. Ut ullamcorper egestas justo et interdum. Nulla eget venenatis mauris. Donec auctor tristique erat.</p>
+                    <form>
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="name" placeholder="Name">
+                        </div>
+                        <div class="form-group">
+                            <textarea class="form-control" id="desc" rows="4" placeholder="Description"></textarea>
+                        </div>
+                    </form>
                 </div>
             </div>
             <div class="container">
@@ -39,7 +44,7 @@
                     </div> 
                     <!-- TODO Change this part for JS - onclick and onhover-->
                     <div class="col-sm-1 rating">
-                        <p>&#9734&#9734&#9734&#9734&#9734</p>
+                        <p><span onclick="client.rating(1)">&#9734</span><span onclick="client.rating(2)">&#9734</span><span onclick="client.rating(3)">&#9734</span><span onclick="client.rating(4)">&#9734</span><span onclick="client.rating(5)">&#9734</span></p>
                     </div>
                 </div>
                 <div class="row">
@@ -65,10 +70,10 @@
                     </div>
                     <div class="row">
                         <div class="col-sm-1">
-                            <label for="choose_gender">Gender</label>
+                            <label for="gender">Gender</label>
                         </div>
                         <div class="col-md-2">
-                            <select name="Gender" id="choose_gender" class="custom-select">
+                            <select name="Gender" id="gender" class="custom-select">
                                 <option value="Neutral">Neutral</option>
                                 <option value="Women">Women</option>
                                 <option value="Men">Men</option>
@@ -90,42 +95,42 @@
                         </div>
                         <div class="col-md">
                             <div class="custom-control custom-checkbox">
-                                <input class="custom-control-input" type="checkbox" value="" id="sanitaryproducts">
-                                <label class="custom-control-label" for="sanitaryproducts"> <i class="fas fa-tint"></i> Sanitary products</label>
+                                <input class="custom-control-input" type="checkbox" value="" id="sanitary">
+                                <label class="custom-control-label" for="sanitary"> <i class="fas fa-tint"></i> Sanitary products</label>
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md">
                             <div class="custom-control custom-checkbox">
-                                <input class="custom-control-input" type="checkbox" value="" id="lactationroom">
-                                <label class="custom-control-label" for="lactationroom"> <i class="fas fa-baby"></i> Nearby lactation room</label>
+                                <input class="custom-control-input" type="checkbox" value="" id="lactation">
+                                <label class="custom-control-label" for="lactation"> <i class="fas fa-baby"></i> Nearby lactation room</label>
                             </div>
                         </div>
                         <div class="col-md">
                             <div class="custom-control custom-checkbox">
-                                <input class="custom-control-input" type="checkbox" value="" id="papertowels">
-                                <label class="custom-control-label" for="papertowels"> <i class="fas fa-toilet-paper"></i> Paper towels</label>
+                                <input class="custom-control-input" type="checkbox" value="" id="towels">
+                                <label class="custom-control-label" for="towels"> <i class="fas fa-toilet-paper"></i> Paper towels</label>
                             </div>
                         </div>
                         <div class="col-md">
                             <div class="custom-control custom-checkbox">
-                                <input class="custom-control-input" type="checkbox" value="" id="workinglock">
-                                <label class="custom-control-label" for="workinglock"> <i class="fas fa-user-lock"></i> Working lock</label>
+                                <input class="custom-control-input" type="checkbox" value="" id="lock">
+                                <label class="custom-control-label" for="lock"> <i class="fas fa-user-lock"></i> Working lock</label>
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md">
                             <div class="custom-control custom-checkbox">
-                                <input class="custom-control-input" type="checkbox" value="" id="changingtable">
-                                <label class="custom-control-label" for="changingtable"> <i class="fas fa-baby"></i> Changing table</label>
+                                <input class="custom-control-input" type="checkbox" value="" id="changing">
+                                <label class="custom-control-label" for="changing"> <i class="fas fa-baby"></i> Changing table</label>
                             </div>
                         </div>
                         <div class="col-md">
                             <div class="custom-control custom-checkbox">
-                                <input class="custom-control-input" type="checkbox" value="" id="seatcovers">
-                                <label class="custom-control-label" for="seatcovers"> <i class="fas fa-toilet"></i> Seat covers</label>
+                                <input class="custom-control-input" type="checkbox" value="" id="covers">
+                                <label class="custom-control-label" for="covers"> <i class="fas fa-toilet"></i> Seat covers</label>
                             </div>
                         </div>
                         <div class="col-md"></div> <!-- To keep the columns in line -->
@@ -133,15 +138,15 @@
                 </div>
                 <div class="container">
                     <div class="row">
-                        <h2>Leave a review!</h2>
+                        <h2>Leave a comment!</h2>
                     </div>
                     <div class="row">
-                        <textarea class="form-control" rows="5" id="review">Log in to review!</textarea>
+                        <textarea class="form-control" rows="5" id="commentContent">Log in to review!</textarea>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-xl">
-                        <button type="button" class="btn btn-secondary float-right m-3">Submit without reviewing</button>
+                        <button type="button" class="btn btn-secondary float-right m-3" onclick="client.restroomUpdate()">Submit without reviewing</button>
                     </div>
                 </div>
             </div>
@@ -149,5 +154,6 @@
         <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+        <script src="client-restroom-main.js"></script>
     </body>
 </html>
