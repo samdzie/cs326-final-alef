@@ -1,9 +1,16 @@
 {
-    "compilerOptions": {
-      "target": "es5",
+  "compilerOptions": {
+      "target": "es2016",
+      "skipLibCheck": true,
+      "noImplicitAny": true,
+      "noImplicitReturns": true,
+      "forceConsistentCasingInFileNames": true,
+      "noImplicitThis": true,
+      "noUnusedParameters": true,
+      "noFallthroughCasesInSwitch": true,
+      "strictNullChecks": true, // good idea not to disable
+      "pretty": true,
       "module": "commonjs",
-      "declaration": true,
-      "outDir": "./dist",
-      "strict": true,
-    }
-  }
+  },
+  "files": [ "static/client.ts", "static/client-restroom.ts", "static/client-search.ts", "static/client-user.ts" ] // change me
+}
