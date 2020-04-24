@@ -55,6 +55,10 @@ export class Restroom {
         this.comments = new CommentSection();
     }
 
+    get id() {
+        return this._id;
+    }
+
     get name() {
         return this._name;
     }
