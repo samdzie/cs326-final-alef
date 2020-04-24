@@ -1,6 +1,6 @@
 //so mainly
 //make it activate when they click the search button
-//read things from the html
+
 //pass them to the backend
 //get results from the backend
 //post them to the html
@@ -11,6 +11,8 @@
 
 export function search() {
     (async () => {
+
+        //read things from the html
         let buildingElement = document.getElementById("building") as HTMLInputElement;
         let genderElement = document.getElementById("gender") as HTMLInputElement;
         let accessibleElement = document.getElementById("accessible") as HTMLInputElement;
@@ -22,7 +24,7 @@ export function search() {
         let sanitaryElement = document.getElementById("sanitary") as HTMLInputElement;
         let lockElement = document.getElementById("lock") as HTMLInputElement;
 
-    const data = {}
+        const data = {}
     
     
     })();

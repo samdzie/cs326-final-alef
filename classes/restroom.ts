@@ -44,6 +44,7 @@ export class Restroom {
     private _id: number;
     private _name: string;
     private _description: string;
+    private _building: string;
     features: Features;
     comments: CommentSection;
 
@@ -51,6 +52,7 @@ export class Restroom {
         this._id = id;
         this._name = "";
         this._description = "";
+        this._building = "";
         this.features = new Features();
         this.comments = new CommentSection();
     }
@@ -69,5 +71,13 @@ export class Restroom {
 
     set description(description: string) {
         this._description = description;
+    }
+
+    get building(){
+        return this._building;
+    }
+
+    set building(building: string){
+        this._building = building;
     }
 }
