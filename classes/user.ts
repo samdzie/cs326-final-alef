@@ -12,9 +12,12 @@ export class User {
 
 export class Login {
     _login : object;
+    userName : string;
+    password : string;
 
-    constructor(login: object) {
-        this._login = {username, password};
+    constructor(userName : string, password : string) {
+        this.userName = userName;
+        this.password = password;
     }
 
     get login() {

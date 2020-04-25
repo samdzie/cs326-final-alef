@@ -11,6 +11,7 @@ export let create = (req: Request, res: Response) => {
 
 export let login = (req: Request, res: Response) => {
     let login = req.body.login;
+    //let _login = new user.login(userName:"John", password:"123");
 
-    res.json(user);
+    res.json(login);
 };
