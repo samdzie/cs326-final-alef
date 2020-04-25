@@ -1,37 +1,29 @@
 {
   "name": "cs326-final-alef",
   "version": "1.0.0",
-  "description": "bathrooms",
-  "main": "server.js",
+  "description": "A web app to record and look up accessible restrooms at UMass Amherst. Developed as a final project for [CS 326: Web Programming](http://web-programming.org/) in Spring 2020, taught by [Professor Emery Berger](https://emeryberger.com/).",
+  "main": "index.js",
   "directories": {
     "doc": "docs"
   },
+  "dependencies": {
+    "express": "^4.17.1",
+    "typescript": "^3.8.3"
+  },
+  "devDependencies": {},
   "scripts": {
-    "build": "tsc",
+    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "ts-node server-main.ts"
   },
   "repository": {
     "type": "git",
-    "url": "\\"
+    "url": "git+https://github.com/samdzie/cs326-final-alef.git"
   },
-  "author": "Team Alef",
+  "keywords": [],
+  "author": "",
   "license": "ISC",
-  "dependencies": {
-    "@types/body-parser": "^1.19.0",
-    "@types/express": "^4.17.6",
-    "body-parser": "^1.19.0",
-    "express": "^4.17.1",
-    "mongodb": "^3.5.6",
-    "nodemon": "^2.0.3",
-    "ts-node": "^8.9.0"
+  "bugs": {
+    "url": "https://github.com/samdzie/cs326-final-alef/issues"
   },
-  "devDependencies": {
-    "@babel/plugin-transform-modules-commonjs": "^7.9.0",
-    "@types/node": "^13.13.2",
-    "@typescript-eslint/eslint-plugin": "^2.29.0",
-    "@typescript-eslint/parser": "^2.29.0",
-    "eslint": "^6.8.0",
-    "typescript": "^3.8.3"
-  },
-  "keywords": []
+  "homepage": "https://github.com/samdzie/cs326-final-alef#readme"
 }
