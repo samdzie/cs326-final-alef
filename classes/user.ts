@@ -1,11 +1,11 @@
 export class User {
-    _username: string;
+    username: string;
 
     constructor(username: string) {
-        this._username = username;
+        this.username = username;
     }
 
-    get username() {
-        return this._username;
-    }
+    // get username() {
+    //     return this._username;
+    // }
 }
