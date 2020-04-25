@@ -50,7 +50,8 @@ export class Database {
 	if (result) {
 	    return result.value;
 	} else {
-	    return null;
+		// return null;
+		return "";
 	}
     }
     
