@@ -6,6 +6,12 @@ A web app to record and look up accessible restrooms at UMass Amherst. Developed
 * Ankita Kumar ([@Ankita-Kumar](https://github.com/Ankita-Kumar))
 * Raymond Tan ([@raymond98tan](https://github.com/raymond98tan))
 
+## To Run:
+* npm install
+* npm run build
+* npm start
+(It should host the front end too, as long as the html files are in the "static" dir in dist)
+
 ## To-Do List
 - [x] HTML/CSS mockup
   - [x] Home

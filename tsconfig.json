@@ -11,6 +11,10 @@
       "strictNullChecks": true, // good idea not to disable
       "pretty": true,
       "module": "commonjs",
+      "outDir": "./dist"
   },
-  "files": [ "static/client.ts", "static/client-restroom.ts", "static/client-search.ts", "static/client-user.ts" ] // change me
+  "include": [ "static/*.ts", 
+    "classes/*.ts", 
+    "controllers/*.ts", 
+    "server.ts"]
 }

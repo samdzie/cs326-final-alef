@@ -9,3 +9,19 @@ export class User {
         return this._username;
     }
 }
+
+export class Login {
+    _login : object;
+    userName : string;
+    password : string;
+
+    constructor(userName : string, password : string) {
+        this.userName = userName;
+        this.password = password;
+    }
+
+    get login() {
+        return this.login;
+    }
+    
+}
