@@ -89,9 +89,9 @@ export class CommentSection {
      */
     add(comment: Comment) {
         this.list.push(comment);
-        this.calculateAverageRating;
-        this.calculateAverageCleanliness;
-        this.calculateAverageTraffic;
+        this.calculateAverageRating();
+        this.calculateAverageCleanliness();
+        this.calculateAverageTraffic();
     }
 
     /**
