@@ -42,7 +42,7 @@ export function restroomCreate() {
         // send POST request
         const data = {};
         const newURL = postURL + "/create";
-        console.log(`restroomUpdate: fetching ${newURL}`);
+        console.log(`restroomCreate: fetching ${newURL}`);
         const response = await(postData(newURL, data));
         const j = await response.json();
         console.log(j);
@@ -56,47 +56,103 @@ export function restroomRead() {
             "id" : id
         };
         const newURL = postURL + "/read";
-        console.log(`restroomUpdate: fetching ${newURL}`);
+        console.log(`restroomRead: fetching ${newURL}`);
         const response = await(postData(newURL, data));
         const j = await response.json();
         restroom = JSON.parse(j.restroom);
 
-        let page: string = window.location.pathname;
-        let nameElement = document.getElementById("name") as HTMLOutputElement;
-        let descElement = document.getElementById("desc") as HTMLOutputElement;
-        let genderElement = document.getElementById("gender") as HTMLSelectElement;
-        let accessibleElement = document.getElementById("accessible") as HTMLInputElement;
-        let stallElement = document.getElementById("stall") as HTMLInputElement;
-        let sanitaryElement = document.getElementById("sanitary") as HTMLInputElement;
-        let lactationElement = document.getElementById("lactation") as HTMLInputElement;
-        let towelsElement = document.getElementById("towels") as HTMLInputElement;
-        let lockElement = document.getElementById("lock") as HTMLInputElement;
-        let changingElement = document.getElementById("changing") as HTMLInputElement;
-        let coversElement = document.getElementById("covers") as HTMLInputElement;
-            
-        if (nameElement) { nameElement.value = restroom.name; }
-        if (descElement) { descElement.value = restroom.description; }
-        if (genderElement) {
-            switch (restroom.features.gender) {
-                case "Neutral":
-                    genderElement.selectedIndex = 0;
-                    break;
-                case "Women":
-                    genderElement.selectedIndex = 1;
-                    break;
-                case "Men":
-                    genderElement.selectedIndex = 2;
-                    break;
+        if (window.location.pathname === "/update") {
+            let nameElement = document.getElementById("name") as HTMLOutputElement;
+            let descElement = document.getElementById("desc") as HTMLOutputElement;
+            let genderElement = document.getElementById("gender") as HTMLSelectElement;
+            let accessibleElement = document.getElementById("accessible") as HTMLInputElement;
+            let stallElement = document.getElementById("stall") as HTMLInputElement;
+            let sanitaryElement = document.getElementById("sanitary") as HTMLInputElement;
+            let lactationElement = document.getElementById("lactation") as HTMLInputElement;
+            let towelsElement = document.getElementById("towels") as HTMLInputElement;
+            let lockElement = document.getElementById("lock") as HTMLInputElement;
+            let changingElement = document.getElementById("changing") as HTMLInputElement;
+            let coversElement = document.getElementById("covers") as HTMLInputElement;
+                
+            if (nameElement) { nameElement.value = restroom.name; }
+            if (descElement) { descElement.value = restroom.description; }
+            if (genderElement) {
+                switch (restroom.features.gender) {
+                    case "Neutral":
+                        genderElement.selectedIndex = 0;
+                        break;
+                    case "Women":
+                        genderElement.selectedIndex = 1;
+                        break;
+                    case "Men":
+                        genderElement.selectedIndex = 2;
+                        break;
+                }
+            }
+            if (accessibleElement) { accessibleElement.checked = restroom.features.accessible; }
+            if (stallElement) { stallElement.checked = restroom.features.stall; }
+            if (sanitaryElement) { sanitaryElement.checked = restroom.features.sanitary; }
+            if (lactationElement) { lactationElement.checked = restroom.features.lactation; }
+            if (towelsElement) { towelsElement.checked = restroom.features.towels; }
+            if (lockElement) { lockElement.checked = restroom.features.lock; }
+            if (changingElement) { changingElement.checked = restroom.features.changing; }
+            if (coversElement) { coversElement.checked = restroom.features.covers; }
+        } else if (window.location.pathname === "/restroom") {
+            let nameElement = document.getElementById("name") as HTMLOutputElement;
+            let descElement = document.getElementById("desc") as HTMLOutputElement;
+            let genderElement = document.getElementById("gender") as HTMLOutputElement;
+            let accessibleElement = document.getElementById("accessible") as HTMLOutputElement;
+            let stallElement = document.getElementById("stall") as HTMLOutputElement;
+            let sanitaryElement = document.getElementById("sanitary") as HTMLOutputElement;
+            let lactationElement = document.getElementById("lactation") as HTMLOutputElement;
+            let towelsElement = document.getElementById("towels") as HTMLOutputElement;
+            let lockElement = document.getElementById("lock") as HTMLOutputElement;
+            let changingElement = document.getElementById("changing") as HTMLOutputElement;
+            let coversElement = document.getElementById("covers") as HTMLOutputElement;
+                
+            if (nameElement) { nameElement.innerText = restroom.name; }
+            if (descElement) { descElement.innerText = restroom.description; }
+            if (genderElement) { genderElement.innerText = restroom.features.gender; }
+            if (accessibleElement) {
+                if (restroom.features.accessible) { accessibleElement.innerText = "Yes"; }
+            }
+            if (stallElement) {
+                if (restroom.features.stall) { stallElement.innerText = "Yes"; }
+            }
+            if (sanitaryElement) {
+                if (restroom.features.sanitary) { sanitaryElement.innerText = "Yes"; }
+            }
+            if (lactationElement) {
+                if (restroom.features.lactation) { lactationElement.innerText = "Yes"; }
+            }
+            if (towelsElement) {
+                if (restroom.features.towels) { towelsElement.innerText = "Yes"; }
+            }
+            if (lockElement) {
+                if (restroom.features.lock) { lockElement.innerText = "Yes"; }
+            }
+            if (changingElement) {
+                if (restroom.features.changing) { changingElement.innerText = "Yes"; }
+            }
+            if (coversElement) {
+                if (restroom.features.covers) { coversElement.innerText = "Yes"; }
+            }
+
+            setRating(Math.ceil(restroom.comments.averageRating));
+            setCleanliness(Math.ceil(restroom.comments.averageCleanliness));
+            setTraffic(Math.ceil(restroom.comments.averageTraffic));
+
+            if (restroom.comments) {
+                let comments = restroom.comments.list;
+                for (let i = 0; i < comments.length; i++) {
+                    let username = comments[i].author.username;
+                    let contents = comments[i].content;
+                    let commentDiv = createCommentElement(username, contents);
+                    let commentSection = document.getElementById("commentSection");
+                    if (commentSection) { commentSection.appendChild(commentDiv); }
+                }
             }
         }
-        if (accessibleElement) { accessibleElement.checked = restroom.features.accessible; }
-        if (stallElement) { stallElement.checked = restroom.features.stall; }
-        if (sanitaryElement) { sanitaryElement.checked = restroom.features.sanitary; }
-        if (lactationElement) { lactationElement.checked = restroom.features.lactation; }
-        if (towelsElement) { towelsElement.checked = restroom.features.towels; }
-        if (lockElement) { lockElement.checked = restroom.features.lock; }
-        if (changingElement) { changingElement.checked = restroom.features.changing; }
-        if (coversElement) { coversElement.checked = restroom.features.covers; }
     })();
 }
 
@@ -145,6 +201,7 @@ export function restroomUpdate() {
         // data validation
         if (rating === 0 || cleanliness === 0 || traffic === 0) {
             alert("You must give an overall, cleanliness, and traffic rating.");
+            return;
         }
 
         // construct Feature object
@@ -197,7 +254,7 @@ export function restroomDelete() {
             "id" : id
         };
         const newURL = postURL + "/delete";
-        console.log(`restroomUpdate: fetching ${newURL}`);
+        console.log(`restroomDelete: fetching ${newURL}`);
         const response = await(postData(newURL, data));
         const j = await response.json();
         console.log(j);
@@ -237,4 +294,22 @@ function changeStars(type: string, from: number, to: number, filled: boolean) {
             }
         }
     }
+}
+
+export function goToUpdate() {
+    window.location.href = url + "/update?id=" + id;
+}
+
+function createCommentElement(username: string, contents: string): HTMLDivElement {
+    let div = document.createElement("div");
+    div.classList.add("comment");
+    let h3 = document.createElement("h3");
+    let usernameText = document.createTextNode(username);
+    h3.appendChild(usernameText);
+    let p = document.createElement("p");
+    let commentText = document.createTextNode(contents);
+    p.appendChild(commentText);
+    div.appendChild(h3);
+    div.appendChild(p);
+    return div;
 }

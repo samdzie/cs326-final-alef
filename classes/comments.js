@@ -26,10 +26,10 @@ class CommentSection {
      * @param comment Comment to be added
      */
     add(comment) {
-        this.list.push(comment);
-        this.calculateAverageRating;
-        this.calculateAverageCleanliness;
-        this.calculateAverageTraffic;
+        this.list.unshift(comment);
+        this.calculateAverageRating();
+        this.calculateAverageCleanliness();
+        this.calculateAverageTraffic();
     }
     /**
      * Removes a given comment from the list.

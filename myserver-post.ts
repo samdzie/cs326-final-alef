@@ -21,7 +21,7 @@ export class MyServer {
 	constructor() {
 		this.restroom = new Restroom(1234567890);
 		this.restroom.name = "ILC 123";
-		this.restroom.description = "Sample description.";
+		this.restroom.description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec bibendum, tortor posuere fermentum lacinia, justo odio mattis lacus, a suscipit lacus elit a mi. Nulla facilisi. Quisque ac risus ut ipsum pulvinar gravida quis non diam. Sed cursus purus id blandit suscipit. Nunc ac gravida justo. Sed metus velit, congue non arcu sit amet, bibendum laoreet velit. Nunc feugiat sapien eu nisi volutpat lobortis non sit amet tortor. Ut ullamcorper egestas justo et interdum. Nulla eget venenatis mauris. Donec auctor tristique erat.";
 		this.restroom.features.gender = "Women";
 		this.restroom.features.accessible = true;
 		this.restroom.features.changing = true;
