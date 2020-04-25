@@ -58,18 +58,19 @@ export class MyServer {
 	this.server.use('/login', express.static('./static/login.html'));
 	this.server.use('/restroom', express.static('./static/restroom.html'));
 	this.server.use('/update', express.static('./static/update.html'));
+	this.server.use('/search', express.static('./static/index.html'));
+
 	// NEW: handle POST in JSON format
 	this.server.use(express.json());
 	// Set a single handler for a route.
 	this.router.post('/create', this.createHandler.bind(this));
-	// this.router.post('/users/:userId/create', this.createHandler.bind(this));
+
 	// Set multiple handlers for a route, in sequence.
 	this.router.post('/read',   [this.errorHandler.bind(this), this.readHandler.bind(this) ]);
 	this.router.post('/update',   [this.errorHandler.bind(this), this.updateHandler.bind(this) ]);
 	this.router.post('/delete',   [this.errorHandler.bind(this), this.deleteHandler.bind(this) ]);
-	// this.router.post('/users/:userId/read',   [this.errorHandler.bind(this), this.readHandler.bind(this) ]);
-	// this.router.post('/users/:userId/update', [this.errorHandler.bind(this), this.updateHandler.bind(this)]);
-	// this.router.post('/users/:userId/delete', [this.errorHandler.bind(this), this.deleteHandler.bind(this)]);
+	this.router.post('/search',   [this.errorHandler.bind(this), this.searchHandler.bind(this) ]);
+
 	// Set a fall-through handler if nothing matches.
 	this.router.post('*', async (request, response) => {
 	    response.send(JSON.stringify({ "result" : "command-not-found" }));
@@ -109,6 +110,10 @@ export class MyServer {
     private async deleteHandler(request, response) : Promise<void> {
 		await this.deleteRestroom(request.body.id, response);
 	// await this.deleteCounter(request.params['userId']+"-"+request.body.name, response);
+	}
+	
+    private async searchHandler(request, response): Promise<void> {
+		await this.searchRestrooms(request.body.id, response);
     }
 
     public listen(port) : void  {
@@ -152,41 +157,14 @@ export class MyServer {
 		response.end();
 	}
 
-    // public async createCounter(name: string, response) : Promise<void> {
-	// console.log("creating counter named '" + name + "'");
-	// await this.theDatabase.put(name, 0);
-	// response.write(JSON.stringify({'result' : 'created',
-	// 			       'name' : name,
-	// 			       'value' : 0 }));
-	// response.end();
-    // }
-
-    // public async errorCounter(name: string, response) : Promise<void> {
-	// response.write(JSON.stringify({'result': 'error'}));
-	// response.end();
-    // }
-
-    // public async readCounter(name: string, response) : Promise<void> {
-	// let value = await this.theDatabase.get(name);
-	// response.write(JSON.stringify({'result' : 'read',
-	// 			       'name' : name,
-	// 			       'value' : value }));
-	// response.end();
-    // }
-
-    // public async updateCounter(name: string, value: number, response) : Promise<void> {
-	// await this.theDatabase.put(name, value);
-	// response.write(JSON.stringify({'result' : 'updated',
-	// 			       'name' : name,
-	// 			       'value' : value }));
-	// response.end();
-    // }
-    
-    // public async deleteCounter(name : string, response) : Promise<void> {
-	// await this.theDatabase.del(name);
-	// response.write(JSON.stringify({'result' : 'deleted',
-	// 			       'value'  : name }));
-	// response.end();
-    // }
+	public async searchRestrooms(id: number, response) : Promise<void> {
+		console.log(`received read request for restroom ${id}`);
+		response.write(JSON.stringify({
+			"result" : "found", //when implemented this would return multiple objects
+			"id" : this.restroom.id,
+			"restroom" : JSON.stringify(this.restroom)
+		}));
+		response.end();
+	}
 }
 

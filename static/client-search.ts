@@ -98,6 +98,18 @@ export function search() {
         const response = await(postData(newURL, data));
         const j = await response.json();
         console.log(j);
+        let restrooms = JSON.parse(j.restroom);
+
+        let resultElement = document.getElementById("results") as HTMLOutputElement;
+
+        for( let i = 0; i< restrooms.length; i++){
+            resultElement.insertAdjacentHTML("beforeend",'<div class="row"><div class="col-md-5 col-sm-12" class="result-container-image"><img src="' + restrooms[i].image + '" class="img-fluid"/></div><div class="col-md-7 col-sm-12" class="result-container-text"><h3><a href="http://127.0.0.1:8080/restroom?id='+restrooms[i].id+'">' + restrooms[i].name + '</a></h3><p>' + restrooms[i].description + '</p></div></div><br/>');
+        }
+
+
+
+
+
     })();
 }
 
