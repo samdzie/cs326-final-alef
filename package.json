@@ -7,8 +7,11 @@
     "doc": "docs"
   },
   "scripts": {
+    "build-ts": "tsc",
+    "postinstall": "npm run build-ts",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "ts-node server-main.ts"
+    "start": "npm run serve",
+    "serve": "node server-main.js"
   },
   "repository": {
     "type": "git",
