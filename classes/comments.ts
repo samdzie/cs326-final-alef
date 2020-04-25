@@ -88,7 +88,7 @@ export class CommentSection {
      * @param comment Comment to be added
      */
     add(comment: Comment) {
-        this.list.push(comment);
+        this.list.unshift(comment);
         this.calculateAverageRating();
         this.calculateAverageCleanliness();
         this.calculateAverageTraffic();
