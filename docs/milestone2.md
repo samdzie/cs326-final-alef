@@ -22,6 +22,9 @@ A button on the restroom view allows users to modify the listed name, descriptio
 Clicking "delete" instead of "update" removes the restroom and redirects the user to the front page.
 
 ## Division of Labor
-- Ankita:
-- Raymond:
+- Ankita: search client and some backend 
+- Raymond: login client
 - Sam: restroom CRUD and backend skeleton
+
+## Heroku app link : 
+[http://boiling-lake-26129.herokuapp.com/]
