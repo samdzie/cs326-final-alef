@@ -13,10 +13,16 @@ body {
 .rating{
     color: rgba(152, 40, 226, 0.705);
 }
-.btn{
+.btn-primary {
     background-color: rgba(152, 40, 226, 0.705);
 } 
 .btn-link{
     color:  rgba(152, 40, 226, 0.705);
     background-color: transparent;    
+}
+a {
+    color: #333333;
+}
+a:hover {
+    text-decoration: none;
 }

@@ -12,14 +12,14 @@
         <div class="container p-3">
             <div class="row">
                 <div class="col-xl">
-                    <button type="button" class="btn btn-secondary float-right m-3">Search</button>
-                    <button type="button" class="btn btn-primary float-right m-3">Login</button>
-                    <h1>UMass Restroom Tracker</h1>
+                    <a href="/" class="btn btn-secondary float-right m-3">Search</button>
+                    <a href="/login" class="btn btn-primary float-right m-3">Login</a>
+                    <a href="/"><h1>UMass Restroom Tracker</h1></a>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-5">
-                    <img src="../assets/map.png" alt="map">
+                    <img src="assets/map.png" alt="map" width="100%">
                 </div>
                 <div class="col-md-7">
                     <form>
@@ -41,10 +41,9 @@
                 <div class="row">
                     <div class= "col-sm-3">
                         <p>Overall Rating</p>
-                    </div> 
-                    <!-- TODO Change this part for JS - onclick and onhover-->
+                    </div>
                     <div class="col-sm-1 rating">
-                        <p><span onclick="client.rating(1)">&#9734</span><span onclick="client.rating(2)">&#9734</span><span onclick="client.rating(3)">&#9734</span><span onclick="client.rating(4)">&#9734</span><span onclick="client.rating(5)">&#9734</span></p>
+                        <p><span id="rating1" onclick="client.setRating(1)">&#9734;</span><span id="rating2" onclick="client.setRating(2)">&#9734;</span><span id="rating3" onclick="client.setRating(3)">&#9734;</span><span id="rating4" onclick="client.setRating(4)">&#9734;</span><span id="rating5" onclick="client.setRating(5)">&#9734;</span></p>
                     </div>
                 </div>
                 <div class="row">
@@ -52,7 +51,7 @@
                         <p>Cleanliness</p>
                     </div>
                     <div class="col-sm-1 rating">
-                        <p>&#9734&#9734&#9734&#9734&#9734</p>
+                        <p><span id="cleanliness1" onclick="client.setCleanliness(1)">&#9734;</span><span id="cleanliness2" onclick="client.setCleanliness(2)">&#9734;</span><span id="cleanliness3" onclick="client.setCleanliness(3)">&#9734;</span><span id="cleanliness4" onclick="client.setCleanliness(4)">&#9734;</span><span id="cleanliness5" onclick="client.setCleanliness(5)">&#9734;</span></p>
                     </div>
                 </div>
                 <div class="row">
@@ -60,7 +59,7 @@
                         <p>Traffic</p>
                     </div> 
                     <div class="col-sm-1 rating">
-                        <p>&#9734&#9734&#9734&#9734&#9734</p>
+                        <p><span id="traffic1" onclick="client.setTraffic(1)">&#9734;</span><span id="traffic2" onclick="client.setTraffic(2)">&#9734;</span><span id="traffic3" onclick="client.setTraffic(3)">&#9734;</span><span id="traffic4" onclick="client.setTraffic(4)">&#9734;</span><span id="traffic5" onclick="client.setTraffic(5)">&#9734;</span></p>
                     </div>
                 </div>
                 <div class="container">
@@ -141,12 +140,13 @@
                         <h2>Leave a comment!</h2>
                     </div>
                     <div class="row">
-                        <textarea class="form-control" rows="5" id="commentContent">Log in to review!</textarea>
+                        <textarea class="form-control" rows="5" id="commentContent" placeholder="Enter a comment..."></textarea>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-xl">
-                        <button type="button" class="btn btn-secondary float-right m-3" onclick="client.restroomUpdate()">Submit without reviewing</button>
+                        <button type="button" class="btn btn-primary float-right m-3" onclick="client.restroomUpdate()">Update</button>
+                        <button type="button" class="btn btn-secondary float-right m-3" onclick="client.restroomDelete()">Delete</button>
                     </div>
                 </div>
             </div>
@@ -154,6 +154,7 @@
         <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+        <script src="client-main.js"></script>
         <script src="client-restroom-main.js"></script>
     </body>
 </html>
