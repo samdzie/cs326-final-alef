@@ -78,6 +78,6 @@ export class Restroom {
     }
 
     set building(building: string){
-        this._building = building;
+        this._building = building; 
     }
 }

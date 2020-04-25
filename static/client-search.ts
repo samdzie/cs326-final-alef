@@ -7,6 +7,28 @@
 //using a lot of html.innerelement and outerelement baiscally
 //linking to index.html
 
+import { Features, Restroom } from '../classes/restroom';
+
+const url = "http://localhost:8080/home";
+
+
+//from in class exercise
+async function postData(url, data) {
+    const resp = await fetch(url,
+                             {
+                                 method: 'POST',
+                                 mode: 'cors',
+                                 cache: 'no-cache',
+                                 credentials: 'same-origin',
+                                 headers: {
+                                     'Content-Type': 'application/json'
+                                 },
+                                 redirect: 'follow',
+                                 body: JSON.stringify(data)
+                             });
+    return resp;
+}
+
 
 
 export function search() {
@@ -24,8 +46,43 @@ export function search() {
         let sanitaryElement = document.getElementById("sanitary") as HTMLInputElement;
         let lockElement = document.getElementById("lock") as HTMLInputElement;
 
-        const data = {}
-    
+        //target is initalized as a restroom object with dummy ID 123
+        /*if an element of target is not set to its default, then the server
+        will use it as one of the search params**/
+        let target : Restroom = new Restroom(123); 
+        
+        if(buildingElement){
+            target.building = buildingElement.value;
+        }
+        if(genderElement){
+            target.features.gender = genderElement.value;
+        }
+        if(accessibleElement){
+            target.features.accessible = accessibleElement.checked;
+        }
+        if(lactationElement){
+            target.features.lactation = lactationElement.checked;
+        }
+        if(changingElement){
+            target.features.changing = changingElement.checked;
+        }
+        if(stallElement){
+            target.features.stall = stallElement.checked;
+        }
+        if(towelsElement){
+            target.features.towels = towelsElement.checked;
+        }
+        if(coversElement){
+            target.features.covers = coversElement.checked;
+        }
+        if(sanitaryElement){
+            target.features.sanitary = sanitaryElement.checked;
+        }
+        if(lockElement){
+            target.features.lock = lockElement.checked;
+        }
+        
+
     
     })();
 }
