@@ -2,19 +2,15 @@
   "compilerOptions": {
       "target": "es2016",
       "skipLibCheck": true,
-      "noImplicitAny": false,//changed
+      "noImplicitAny": false, // originally true
       "noImplicitReturns": true,
       "forceConsistentCasingInFileNames": true,
       "noImplicitThis": true,
-      "noUnusedParameters": false, //changed
+      "noUnusedParameters": false, // originally true
       "noFallthroughCasesInSwitch": true,
       "strictNullChecks": true, // good idea not to disable
       "pretty": true,
       "module": "commonjs",
-      "outDir": "./dist"
   },
-  "include": [ "static/*.ts", 
-    "classes/*.ts", 
-    "controllers/*.ts", 
-    "server.ts"]
+  "files": [ "static/client-restroom.ts", "static/client-search.ts", "static/client-user.ts", "static/client.ts" ] // change me
 }

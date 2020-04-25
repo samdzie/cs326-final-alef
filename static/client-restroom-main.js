@@ -1,3 +1,126 @@
+(function(f){if(typeof exports==="object"&&typeof module!=="undefined"){module.exports=f()}else if(typeof define==="function"&&define.amd){define([],f)}else{var g;if(typeof window!=="undefined"){g=window}else if(typeof global!=="undefined"){g=global}else if(typeof self!=="undefined"){g=self}else{g=this}g.client = f()}})(function(){var define,module,exports;return (function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(require,module,exports){
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+/**
+ * A data structure for user comments.
+ */
+class Comment {
+    constructor(author) {
+        this.author = author;
+        this.content = "";
+        this.time = new Date().getTime();
+        this.rating = 0;
+        this.traffic = 0;
+        this.cleanliness = 0;
+    }
+}
+exports.Comment = Comment;
+/**
+ * A wrapper class for a list of comments.
+ */
+class CommentSection {
+    constructor() {
+        this.list = [];
+    }
+    /**
+     * Adds a given comment to the list.
+     * @param comment Comment to be added
+     */
+    add(comment) {
+        this.list.unshift(comment);
+        this.calculateAverageRating();
+        this.calculateAverageCleanliness();
+        this.calculateAverageTraffic();
+    }
+    /**
+     * Removes a given comment from the list.
+     * @param comment Comment to be removed
+     */
+    remove(comment) {
+        let idx = this.list.indexOf(comment);
+        if (idx === -1) {
+            throw new Error("comment not found");
+        }
+        this.list.splice(idx, 1);
+    }
+    /**
+     * Returns a deep copy of comment list.
+     */
+    comments() {
+        return this.list.slice();
+    }
+    /**
+     * Returns average overall rating across comments.
+     */
+    calculateAverageRating() {
+        this.averageRating = this.average(x => x.rating);
+    }
+    /**
+     * Returns average cleanliness rating across comments.
+     */
+    calculateAverageCleanliness() {
+        this.averageCleanliness = this.average(x => x.cleanliness);
+    }
+    /**
+     * Returns average traffic rating across comments.
+     */
+    calculateAverageTraffic() {
+        this.averageTraffic = this.average(x => x.traffic);
+    }
+    /**
+     * Finds average across comment list for a given metric (rating, cleanliness, traffic).
+     * @param callback Function to extract appropriate rating from comment
+     */
+    average(callback) {
+        let ratings = this.list.map(callback);
+        let sum = ratings.reduce(function (total, next) {
+            return total + next;
+        });
+        return sum / ratings.length;
+    }
+}
+exports.CommentSection = CommentSection;
+
+},{}],2:[function(require,module,exports){
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const comments_1 = require("./comments");
+class Features {
+    constructor() {
+        this.gender = "Neutral";
+        this.accessible = false;
+        this.lactation = false;
+        this.changing = false;
+        this.stall = false;
+        this.towels = false;
+        this.covers = false;
+        this.sanitary = false;
+        this.lock = false;
+    }
+}
+exports.Features = Features;
+class Restroom {
+    constructor(id) {
+        this.id = id;
+        this.name = "";
+        this.description = "";
+        this.features = new Features();
+        this.comments = new comments_1.CommentSection();
+    }
+}
+exports.Restroom = Restroom;
+
+},{"./comments":1}],3:[function(require,module,exports){
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+class User {
+    constructor(username) {
+        this.username = username;
+    }
+}
+exports.User = User;
+
+},{}],4:[function(require,module,exports){
 "use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
@@ -390,3 +513,6 @@ function createCommentElement(username, contents) {
     div.appendChild(p);
     return div;
 }
+
+},{"../classes/comments":1,"../classes/restroom":2,"../classes/user":3}]},{},[4])(4)
+});

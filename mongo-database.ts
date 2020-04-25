@@ -15,14 +15,28 @@ export class Database {
 	// in the constructor, which cannot be async. So, we use "IIFE". Explanation below.
 	
 	/* from https://anthonychu.ca/post/async-await-typescript-nodejs/
+<<<<<<< HEAD
 	  Async/Await and the Async IIFE
+=======
+
+	  Async/Await and the Async IIFE
+
+>>>>>>> bf46ecf4cb1162783388c732bbf469af4e3a7de2
 	  The await keyword can only be used inside of a function
 	  marked with the async keyword. [...] One way to do this is
 	  with an "async IIFE" (immediately invoked function
 	  expression)...
+<<<<<<< HEAD
 	   (async () => {
 	   // code goes here
 	   })();
+=======
+
+	   (async () => {
+	   // code goes here
+	   })();
+
+>>>>>>> bf46ecf4cb1162783388c732bbf469af4e3a7de2
 	*/
 	(async () => {
 	    await this.client.connect().catch(err => { console.log(err); });
@@ -69,4 +83,8 @@ export class Database {
 	    return true;
 	}
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> bf46ecf4cb1162783388c732bbf469af4e3a7de2

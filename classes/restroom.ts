@@ -1,7 +1,7 @@
 import { CommentSection } from './comments';
 
 export class Features {
-    private _gender: string;
+    gender: string;
     accessible: boolean;
     lactation: boolean;
     changing: boolean;
@@ -12,7 +12,7 @@ export class Features {
     lock: boolean;
 
     constructor() {
-        this._gender = "Neutral";
+        this.gender = "Neutral";
         this.accessible = false;
         this.lactation = false;
         this.changing = false;
@@ -23,66 +23,57 @@ export class Features {
         this.lock = false;
     }
 
-    get gender() {
-        return this._gender;
-    }
+    // get gender() {
+    //     return this._gender;
+    // }
 
-    set gender(gender: string) {
-        switch (gender) {
-            case "Neutral":
-            case "Women":
-            case "Men":
-                this._gender = gender;
-                break;
-            default:
-                throw new Error("gender must be 'Neutral', 'Women', or 'Men'");
-        }
-    }
+    // set gender(gender: string) {
+    //     switch (gender) {
+    //         case "Neutral":
+    //         case "Women":
+    //         case "Men":
+    //             this._gender = gender;
+    //             break;
+    //         default:
+    //             throw new Error("gender must be 'Neutral', 'Women', or 'Men'");
+    //     }
+    // }
 }
 
 export class Restroom {
-    private _id: number;
-    private _name: string;
-    private _description: string;
-    private _building: string;
+    id: number;
+    name: string;
+    building: string;
+    description: string;
     features: Features;
     comments: CommentSection;
 
     constructor(id: number) {
-        this._id = id;
-        this._name = "";
-        this._description = "";
-        this._building = "";
+        this.id = id;
+        this.name = "";
+        this.building = "";
+        this.description = "";
         this.features = new Features();
         this.comments = new CommentSection();
     }
 
-    //just for testing
-    get id(){
-        return this._id;
-    }
+    // get id() {
+    //     return this._id;
+    // }
 
-    get name() {
-        return this._name;
-    }
+    // get name() {
+    //     return this._name;
+    // }
 
-    set name(name: string) {
-        this._name = name;
-    }
+    // set name(name: string) {
+    //     this._name = name;
+    // }
 
-    get description() {
-        return this._description;
-    }
+    // get description() {
+    //     return this._description;
+    // }
 
-    set description(description: string) {
-        this._description = description;
-    }
-
-    get building(){
-        return this._building;
-    }
-
-    set building(building: string){
-        this._building = building; 
-    }
+    // set description(description: string) {
+    //     this._description = description;
+    // }
 }
