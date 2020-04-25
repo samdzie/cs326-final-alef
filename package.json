@@ -2,7 +2,7 @@
   "name": "cs326-final-alef",
   "version": "1.0.0",
   "description": "A web app to record and look up accessible restrooms at UMass Amherst. Developed as a final project for [CS 326: Web Programming](http://web-programming.org/) in Spring 2020, taught by [Professor Emery Berger](https://emeryberger.com/).",
-  "main": "mongo-database.js",
+  "main": "server-main.js",
   "directories": {
     "doc": "docs"
   },
@@ -12,6 +12,9 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "npm run serve",
     "serve": "node server-main.js"
+  },
+  "engines": {
+    "node": "8.11.4"
   },
   "repository": {
     "type": "git",
