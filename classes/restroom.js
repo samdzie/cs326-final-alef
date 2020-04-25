@@ -1,8 +1,8 @@
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-const comments_1 = require("./comments");
-class Features {
-    constructor() {
+exports.__esModule = true;
+var comments_1 = require("./comments");
+var Features = /** @class */ (function () {
+    function Features() {
         this.gender = "Neutral";
         this.accessible = false;
         this.lactation = false;
@@ -13,15 +13,18 @@ class Features {
         this.sanitary = false;
         this.lock = false;
     }
-}
+    return Features;
+}());
 exports.Features = Features;
-class Restroom {
-    constructor(id) {
+var Restroom = /** @class */ (function () {
+    function Restroom(id) {
         this.id = id;
         this.name = "";
+        this.building = "";
         this.description = "";
         this.features = new Features();
         this.comments = new comments_1.CommentSection();
     }
-}
+    return Restroom;
+}());
 exports.Restroom = Restroom;

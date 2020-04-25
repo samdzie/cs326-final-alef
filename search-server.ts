@@ -98,23 +98,23 @@ export class MyServer {
 	}
     }
     
-    private async createHandler(request: any, response: any) : Promise<void> {
+    private async createHandler(request, response) : Promise<void> {
 		await this.createRestroom(response);
 	// await this.createCounter(request.params['userId']+"-"+request.body.name, response);
     }
 
-    private async readHandler(request: any, response: any): Promise<void> {
+    private async readHandler(request, response): Promise<void> {
 		await this.readRestroom(request.body.id, response);
 	// console.log(request.params['userId']);
 	// await this.readCounter(request.params['userId']+"-"+request.body.name, response);
     }
 
-    private async updateHandler(request: any, response: any) : Promise<void> {
+    private async updateHandler(request, response) : Promise<void> {
 		await this.updateRestroom(request.body.id, response);
 	// await this.updateCounter(request.params['userId']+"-"+request.body.name, request.body.value, response);
     }
 
-    private async deleteHandler(request: any, response: any) : Promise<void> {
+    private async deleteHandler(request, response) : Promise<void> {
 		await this.deleteRestroom(request.body.id, response);
 	// await this.deleteCounter(request.params['userId']+"-"+request.body.name, response);
     }

@@ -1,26 +1,22 @@
-//make it activate when they click the search button
+import { Restroom } from '../classes/restroom';
 
+const url: string = "http://localhost:8080";
 
-
-import { Features, Restroom } from '../classes/restroom';
-
-const url = "http://localhost:8080/home";
-
-
+let target: Restroom;
 //from in class exercise
 async function postData(url: string, data: Object) {
     const resp = await fetch(url,
-                             {
-                                 method: 'POST',
-                                 mode: 'cors',
-                                 cache: 'no-cache',
-                                 credentials: 'same-origin',
-                                 headers: {
-                                     'Content-Type': 'application/json'
-                                 },
-                                 redirect: 'follow',
-                                 body: JSON.stringify(data)
-                             });
+         {
+             method: 'POST',
+             mode: 'cors',
+             cache: 'no-cache',
+             credentials: 'same-origin',
+             headers: {
+                 'Content-Type': 'application/json'
+             },
+             redirect: 'follow',
+             body: JSON.stringify(data)
+         });
     return resp;
 }
 
@@ -41,11 +37,10 @@ export function search() {
         let sanitaryElement = document.getElementById("sanitary") as HTMLInputElement;
         let lockElement = document.getElementById("lock") as HTMLInputElement;
 
-        console.log("got here");
         //target is initalized as a restroom object with dummy ID 123
         /*if an element of target is not set to its default, then the server
         will use it as one of the search params**/
-        let target : Restroom = new Restroom(123); 
+        target = new Restroom(123); 
         
         if(buildingElement){
             target.building = buildingElement.value;
@@ -77,6 +72,7 @@ export function search() {
         if(lockElement){
             target.features.lock = lockElement.checked;
         }
+        console.log("got here");
 
         //pass them to the backend
         const data = {
@@ -87,7 +83,7 @@ export function search() {
         const response = await(postData(newURL, data));
         const j = await response.json();
         console.log(j);
-
+    
 
 
 
