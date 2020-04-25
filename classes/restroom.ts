@@ -43,6 +43,7 @@ export class Features {
 export class Restroom {
     id: number;
     name: string;
+    building: string;
     description: string;
     features: Features;
     comments: CommentSection;
@@ -50,6 +51,7 @@ export class Restroom {
     constructor(id: number) {
         this.id = id;
         this.name = "";
+        this.building = "";
         this.description = "";
         this.features = new Features();
         this.comments = new CommentSection();
