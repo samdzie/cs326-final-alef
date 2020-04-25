@@ -9,7 +9,7 @@ let express = require('express');
 
 export class MyServer {
 
-    private theDatabase;
+   // private theDatabase;
 
     // Server stuff: use express instead of http.createServer
     private server = express();
@@ -61,7 +61,10 @@ export class MyServer {
 	this.server.use('/', express.static('./static'));
 	this.server.use('/login', express.static('./static/login.html'));
 	this.server.use('/restroom', express.static('./static/restroom.html'));
-	this.server.use('/update', express.static('./static/update.html'));
+    this.server.use('/update', express.static('./static/update.html'));
+    
+    this.server.use('/search', express.static('./static/index.html'));
+
 	// NEW: handle POST in JSON format
 	this.server.use(express.json());
 	// Set a single handler for a route.
@@ -69,16 +72,21 @@ export class MyServer {
 	// Set multiple handlers for a route, in sequence.
 	this.router.post('/read',   [this.errorHandler.bind(this), this.readHandler.bind(this) ]);
 	this.router.post('/update',   [this.errorHandler.bind(this), this.updateHandler.bind(this) ]);
-	this.router.post('/delete',   [this.errorHandler.bind(this), this.deleteHandler.bind(this) ]);
+    this.router.post('/delete',   [this.errorHandler.bind(this), this.deleteHandler.bind(this) ]);
+    
+    this.router.post('/delete',   [this.errorHandler.bind(this), this.deleteHandler.bind(this) ]);
+
+
 	// Set a fall-through handler if nothing matches.
 	this.router.post('*', async (request, response) => {
 	    response.send(JSON.stringify({ "result" : "command-not-found" }));
 	});
-	// Start up the counter endpoint at '/counter'.
-	this.server.use('/restroom', this.router);
+    
+    // Start up the endpoint.
+	this.server.use('/search', this.router);
     } // the contructor ends here... why??
 
-    private async errorHandler(request, response, next) : Promise<void> {
+    private async errorHandler(request: any, response: any, next) : Promise<void> {
 		let value = true;
 	// let value : boolean = await this.theDatabase.isFound(request.params['userId']+"-"+request.body.name);
 //	console.log("result from database.isFound: " + JSON.stringify(value));
@@ -90,23 +98,23 @@ export class MyServer {
 	}
     }
     
-    private async createHandler(request, response) : Promise<void> {
+    private async createHandler(request: any, response: any) : Promise<void> {
 		await this.createRestroom(response);
 	// await this.createCounter(request.params['userId']+"-"+request.body.name, response);
     }
 
-    private async readHandler(request, response): Promise<void> {
+    private async readHandler(request: any, response: any): Promise<void> {
 		await this.readRestroom(request.body.id, response);
 	// console.log(request.params['userId']);
 	// await this.readCounter(request.params['userId']+"-"+request.body.name, response);
     }
 
-    private async updateHandler(request, response) : Promise<void> {
+    private async updateHandler(request: any, response: any) : Promise<void> {
 		await this.updateRestroom(request.body.id, response);
 	// await this.updateCounter(request.params['userId']+"-"+request.body.name, request.body.value, response);
     }
 
-    private async deleteHandler(request, response) : Promise<void> {
+    private async deleteHandler(request: any, response: any) : Promise<void> {
 		await this.deleteRestroom(request.body.id, response);
 	// await this.deleteCounter(request.params['userId']+"-"+request.body.name, response);
     }
@@ -152,4 +160,4 @@ export class MyServer {
 		response.end();
 	}
 
-
+}

@@ -30,12 +30,12 @@ export class Features {
     set gender(gender: string) {
         switch (gender) {
             case "Neutral":
-            case "Female":
-            case "Male":
+            case "Women":
+            case "Men":
                 this._gender = gender;
                 break;
             default:
-                throw new Error("gender must be 'Neutral', 'Female', or 'Male'");
+                throw new Error("gender must be 'Neutral', 'Women', or 'Men'");
         }
     }
 }

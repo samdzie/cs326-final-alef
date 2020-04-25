@@ -8,7 +8,7 @@ const url = "http://localhost:8080/home";
 
 
 //from in class exercise
-async function postData(url, data) {
+async function postData(url: string, data: Object) {
     const resp = await fetch(url,
                              {
                                  method: 'POST',
@@ -41,6 +41,7 @@ export function search() {
         let sanitaryElement = document.getElementById("sanitary") as HTMLInputElement;
         let lockElement = document.getElementById("lock") as HTMLInputElement;
 
+        console.log("got here");
         //target is initalized as a restroom object with dummy ID 123
         /*if an element of target is not set to its default, then the server
         will use it as one of the search params**/
