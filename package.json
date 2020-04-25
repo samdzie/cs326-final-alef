@@ -2,18 +2,9 @@
   "name": "cs326-final-alef",
   "version": "1.0.0",
   "description": "A web app to record and look up accessible restrooms at UMass Amherst. Developed as a final project for [CS 326: Web Programming](http://web-programming.org/) in Spring 2020, taught by [Professor Emery Berger](https://emeryberger.com/).",
-  "main": "index.js",
+  "main": "mongo-database.js",
   "directories": {
     "doc": "docs"
-  },
-  "dependencies": {
-    "express": "^4.17.1",
-    "mongodb": "^3.5.6",
-    "ts-node": "^8.9.0",
-    "typescript": "^3.8.3"
-  },
-  "devDependencies": {
-    "@types/node": "^13.13.2"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -29,5 +20,11 @@
   "bugs": {
     "url": "https://github.com/samdzie/cs326-final-alef/issues"
   },
-  "homepage": "https://github.com/samdzie/cs326-final-alef#readme"
+  "homepage": "https://github.com/samdzie/cs326-final-alef#readme",
+  "dependencies": {
+    "@types/node": "^13.13.2",
+    "express": "^4.17.1",
+    "ts-node": "^8.9.0",
+    "typescript": "^3.8.3"
+  }
 }
