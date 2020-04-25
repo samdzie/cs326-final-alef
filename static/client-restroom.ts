@@ -18,8 +18,12 @@ const query = window.location.search;
 const parameters = new URLSearchParams(query);
 let idParam = parameters.get("id");
 let id: number = 0;
-if (idParam) { id = parseInt(idParam); }
-restroomRead();
+if (idParam) {
+    id = parseInt(idParam);
+    restroomRead();
+} else {
+    restroomCreate();
+}
 
 // helper function from lecture 21 exercise
 async function postData(url: string, data: Object) {
@@ -46,6 +50,11 @@ export function restroomCreate() {
         const response = await(postData(newURL, data));
         const j = await response.json();
         console.log(j);
+        id = j.id;
+        restroom = new Restroom(id);
+        
+        let updateButton = document.getElementById("updateButton");
+        if (updateButton) { updateButton.innerText = "Create"; }
     })();
 }
 
@@ -59,6 +68,7 @@ export function restroomRead() {
         console.log(`restroomRead: fetching ${newURL}`);
         const response = await(postData(newURL, data));
         const j = await response.json();
+        console.log(j);
         restroom = JSON.parse(j.restroom);
 
         if (window.location.pathname === "/update") {
@@ -205,7 +215,7 @@ export function restroomUpdate() {
         }
 
         // construct Feature object
-        let features = new Features();
+        let features = restroom.features;
         features.gender = gender;
         features.accessible = accessible;
         features.stall = stall;
@@ -217,7 +227,7 @@ export function restroomUpdate() {
         features.covers = covers;
 
         // construct CommentSection object
-        let comments = new CommentSection();
+        let comments = restroom.comments;
         let author = new User("someuser1");
         let comment = new Comment(author);
         comment.content = commentContent;
@@ -227,7 +237,6 @@ export function restroomUpdate() {
         comments.add(comment);
 
         // construct Restroom object to POST
-        let restroom = new Restroom(1234567890);
         restroom.name = name;
         restroom.description = desc;
         restroom.features = features;

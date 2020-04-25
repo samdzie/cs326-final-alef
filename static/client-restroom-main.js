@@ -151,8 +151,11 @@ let idParam = parameters.get("id");
 let id = 0;
 if (idParam) {
     id = parseInt(idParam);
+    restroomRead();
 }
-restroomRead();
+else {
+    restroomCreate();
+}
 // helper function from lecture 21 exercise
 function postData(url, data) {
     return __awaiter(this, void 0, void 0, function* () {
@@ -179,6 +182,12 @@ function restroomCreate() {
         const response = yield (postData(newURL, data));
         const j = yield response.json();
         console.log(j);
+        id = j.id;
+        restroom = new restroom_1.Restroom(id);
+        let updateButton = document.getElementById("updateButton");
+        if (updateButton) {
+            updateButton.innerText = "Create";
+        }
     }))();
 }
 exports.restroomCreate = restroomCreate;
@@ -192,6 +201,7 @@ function restroomRead() {
         console.log(`restroomRead: fetching ${newURL}`);
         const response = yield (postData(newURL, data));
         const j = yield response.json();
+        console.log(j);
         restroom = JSON.parse(j.restroom);
         if (window.location.pathname === "/update") {
             let nameElement = document.getElementById("name");
@@ -399,7 +409,7 @@ function restroomUpdate() {
             return;
         }
         // construct Feature object
-        let features = new restroom_1.Features();
+        let features = restroom.features;
         features.gender = gender;
         features.accessible = accessible;
         features.stall = stall;
@@ -410,7 +420,7 @@ function restroomUpdate() {
         features.changing = changing;
         features.covers = covers;
         // construct CommentSection object
-        let comments = new comments_1.CommentSection();
+        let comments = restroom.comments;
         let author = new user_1.User("someuser1");
         let comment = new comments_1.Comment(author);
         comment.content = commentContent;
@@ -419,7 +429,6 @@ function restroomUpdate() {
         comment.traffic = traffic;
         comments.add(comment);
         // construct Restroom object to POST
-        let restroom = new restroom_1.Restroom(1234567890);
         restroom.name = name;
         restroom.description = desc;
         restroom.features = features;
