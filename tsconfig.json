@@ -10,7 +10,8 @@
       "noFallthroughCasesInSwitch": true,
       "strictNullChecks": true, // good idea not to disable
       "pretty": true,
-      "module": "commonjs",
+      "module": "CommonJS" //originally commonjs
+      //"lib": ["dom","es6"]
   },
   "files": [ "static/client-restroom.ts", "static/client-search.ts", "static/client-user.ts", "static/client.ts" ] // change me
 }

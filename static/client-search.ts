@@ -1,22 +1,31 @@
-import { Restroom } from '../classes/restroom';
+import { Features, Restroom } from '../classes/restroom';
+import { Comment, CommentSection } from '../classes/comments';
+import { User } from '../classes/user';
 
-const url: string = "http://localhost:8080";
+const url: string = "http://127.0.0.1:8080";
+const postURL: string = url + "/home";
+const fullstar: string = "&#9733;";
+const blankstar: string = "&#9734;";
 
 let target: Restroom;
-//from in class exercise
+let rating: number = 0;
+let cleanliness: number = 0;
+let traffic: number = 0;
+
+
+// helper function from lecture 21 exercise
 async function postData(url: string, data: Object) {
-    const resp = await fetch(url,
-         {
-             method: 'POST',
-             mode: 'cors',
-             cache: 'no-cache',
-             credentials: 'same-origin',
-             headers: {
-                 'Content-Type': 'application/json'
-             },
-             redirect: 'follow',
-             body: JSON.stringify(data)
-         });
+    const resp = await fetch(url, {
+        method: 'POST',
+        mode: 'cors',
+        cache: 'no-cache',
+        credentials: 'same-origin',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        redirect: 'follow',
+        body: JSON.stringify(data)
+    });
     return resp;
 }
 
@@ -75,15 +84,22 @@ export function search() {
         console.log("got here");
 
         //pass them to the backend
+
+        // construct Restroom object to POST
+        target.name = "";
+        target.description = "";
+
+        // send POST request
         const data = {
             "restroom" : target
         };
-        const newURL = url + "/search";
-        console.log(`restroomUpdate: fetching ${newURL}`);
+        const newURL = postURL + "/search";
+        console.log(`searching: fetching ${newURL}`);
         const response = await(postData(newURL, data));
         const j = await response.json();
         console.log(j);
-    
+    })();
+}
 
 
 
@@ -91,6 +107,4 @@ export function search() {
         //post them to the html
         //using a lot of html.innerelement and outerelement baiscally
         //linking to index.html
-    
-    })();
-}
+ 

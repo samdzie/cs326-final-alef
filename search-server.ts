@@ -74,7 +74,7 @@ export class MyServer {
 	this.router.post('/update',   [this.errorHandler.bind(this), this.updateHandler.bind(this) ]);
     this.router.post('/delete',   [this.errorHandler.bind(this), this.deleteHandler.bind(this) ]);
     
-    this.router.post('/delete',   [this.errorHandler.bind(this), this.deleteHandler.bind(this) ]);
+    this.router.post('/search',   [this.errorHandler.bind(this), this.searchHandler.bind(this) ]);
 
 
 	// Set a fall-through handler if nothing matches.
@@ -83,7 +83,7 @@ export class MyServer {
 	});
     
     // Start up the endpoint.
-	this.server.use('/search', this.router);
+	this.server.use('/home', this.router);
     } // the contructor ends here... why??
 
     private async errorHandler(request: any, response: any, next) : Promise<void> {
@@ -117,6 +117,10 @@ export class MyServer {
     private async deleteHandler(request, response) : Promise<void> {
 		await this.deleteRestroom(request.body.id, response);
 	// await this.deleteCounter(request.params['userId']+"-"+request.body.name, response);
+    }
+
+    private async searchHandler(request, response): Promise<void> {
+		await this.searchRestrooms(request.body.id, response);
     }
 
     public listen(port) : void  {
@@ -158,6 +162,17 @@ export class MyServer {
 			"id" : this.restroom.id
 		}));
 		response.end();
+    }
+    
+    public async searchRestrooms(id: number, response) : Promise<void> {
+		console.log(`received read request for restroom ${id}`);
+		response.write(JSON.stringify({
+			"result" : "found", //when implemented this would return multiple
+			"id" : this.restroom.id,
+			"restroom" : JSON.stringify(this.restroom)
+		}));
+		response.end();
 	}
+
 
 }
