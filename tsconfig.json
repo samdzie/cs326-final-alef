@@ -2,11 +2,11 @@
   "compilerOptions": {
       "target": "es2016",
       "skipLibCheck": true,
-      "noImplicitAny": true,
+      "noImplicitAny": false, // originally true
       "noImplicitReturns": true,
       "forceConsistentCasingInFileNames": true,
       "noImplicitThis": true,
-      "noUnusedParameters": true,
+      "noUnusedParameters": false, // originally true
       "noFallthroughCasesInSwitch": true,
       "strictNullChecks": true, // good idea not to disable
       "pretty": true,
