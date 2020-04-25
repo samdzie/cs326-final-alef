@@ -103,6 +103,7 @@ class Restroom {
     constructor(id) {
         this.id = id;
         this.name = "";
+        this.building = "";
         this.description = "";
         this.features = new Features();
         this.comments = new comments_1.CommentSection();
