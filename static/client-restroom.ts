@@ -234,7 +234,7 @@ export function restroomUpdate() {
         comment.rating = rating;
         comment.cleanliness = cleanliness;
         comment.traffic = traffic;
-        comments.add(comment);
+        comments.list.unshift(comment);
 
         // construct Restroom object to POST
         restroom.name = name;
