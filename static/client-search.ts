@@ -1,11 +1,6 @@
-//so mainly
 //make it activate when they click the search button
 
-//pass them to the backend
-//get results from the backend
-//post them to the html
-//using a lot of html.innerelement and outerelement baiscally
-//linking to index.html
+
 
 import { Features, Restroom } from '../classes/restroom';
 
@@ -81,8 +76,24 @@ export function search() {
         if(lockElement){
             target.features.lock = lockElement.checked;
         }
-        
 
+        //pass them to the backend
+        const data = {
+            "restroom" : target
+        };
+        const newURL = url + "/search";
+        console.log(`restroomUpdate: fetching ${newURL}`);
+        const response = await(postData(newURL, data));
+        const j = await response.json();
+        console.log(j);
+
+
+
+
+        //get results from the backend
+        //post them to the html
+        //using a lot of html.innerelement and outerelement baiscally
+        //linking to index.html
     
     })();
 }
