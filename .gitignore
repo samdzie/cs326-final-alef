@@ -1,5 +1,7 @@
 test.ts
-# *.js
+
+# compiled JS files
+*.js
 
 # Logs
 logs

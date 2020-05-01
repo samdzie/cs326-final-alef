@@ -13,5 +13,5 @@
       "module": "CommonJS" //originally commonjs
       //"lib": ["dom","es6"]
   },
-  "files": [ "static/client-restroom.ts", "static/client-search.ts", "static/client-user.ts", "static/client.ts", "server-main.ts" ] // change me
+  "files": [ "static/client-restroom.ts", "static/client-search.ts", "static/client-user.ts" ] // change me
 }
