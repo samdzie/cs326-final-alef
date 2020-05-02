@@ -81,6 +81,9 @@ export class CommentSection {
 
     constructor() {
         this.list = [];
+        this.averageRating = 0;
+        this.averageCleanliness = 0;
+        this.averageTraffic = 0;
     }
 
     /**

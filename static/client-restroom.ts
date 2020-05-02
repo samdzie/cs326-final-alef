@@ -11,6 +11,7 @@ let restroom: Restroom;
 let rating: number = 0;
 let cleanliness: number = 0;
 let traffic: number = 0;
+let author = new User("testuser");
 
 // get restroom ID from URL
 // based on https://easyautotagging.com/javascript-get-url-parameter/
@@ -68,8 +69,8 @@ export function restroomRead() {
         console.log(`restroomRead: fetching ${newURL}`);
         const response = await(postData(newURL, data));
         const j = await response.json();
-        console.log(j);
         restroom = JSON.parse(j.restroom);
+        console.log(restroom);
 
         if (window.location.pathname === "/update") {
             let nameElement = document.getElementById("name") as HTMLOutputElement;
@@ -228,13 +229,15 @@ export function restroomUpdate() {
 
         // construct CommentSection object
         let comments = restroom.comments;
-        let author = new User("someuser1");
         let comment = new Comment(author);
         comment.content = commentContent;
         comment.rating = rating;
         comment.cleanliness = cleanliness;
         comment.traffic = traffic;
         comments.list.unshift(comment);
+        comments.averageRating = (comments.averageRating * (comments.list.length - 1) + comment.rating) / comments.list.length;
+        comments.averageCleanliness = (comments.averageCleanliness * (comments.list.length - 1) + comment.cleanliness) / comments.list.length;
+        comments.averageTraffic = (comments.averageTraffic * (comments.list.length - 1) + comment.traffic) / comments.list.length;
 
         // construct Restroom object to POST
         restroom.name = name;
