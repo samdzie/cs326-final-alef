@@ -1,10 +1,14 @@
-export class Database {
+const secrets = require("./secrets.json");
+const username: string = process.env.USERNAME || secrets.MongoDB.username;
+const password: string = process.env.PASSWORD || secrets.MongoDB.password;
 
-    private MongoClient = require('mongodb').MongoClient;
-    private uri = "mongodb+srv://guest:guest@cluster0-y0tyl.mongodb.net/test?retryWrites=true&w=majority";
+export class Database {
+	
+	private MongoClient = require('mongodb').MongoClient;
+    private uri = "mongodb+srv://"+username+":"+password+"@cs326-final-alef-wscmn.mongodb.net/test?retryWrites=true&w=majority";
     private client;
     private collectionName : string;
-    private dbName : string = "emery";
+    private dbName : string = "main";
 
     constructor(collectionName) {
 	this.collectionName = collectionName;
