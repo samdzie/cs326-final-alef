@@ -6,11 +6,15 @@ A web app to record and look up accessible restrooms at UMass Amherst. Developed
 * Ankita Kumar ([@Ankita-Kumar](https://github.com/Ankita-Kumar))
 * Raymond Tan ([@raymond98tan](https://github.com/raymond98tan))
 
-## To Run:
-* npm install
-* npm run build
-* npm start
-(It should host the front end too, as long as the html files are in the "static" dir in dist)
+## Build
+Run the provided Bash script to compile and bundle the client-side TypeScript files into JavaScript.
+
+`./build.sh`
+
+## Start Server
+To start the server, run the following command:
+
+`ts-node server-main.ts`
 
 ## To-Do List
 - [x] HTML/CSS mockup
@@ -33,9 +37,9 @@ A web app to record and look up accessible restrooms at UMass Amherst. Developed
     - [x] Leave a review
   - [x] Log in page
 - [ ] Front-end
-  - [ ] API documentation
-  - [ ] Define custom classes
-  - [ ] Back-end skeleton
+  - [x] API documentation
+  - [x] Define custom classes
+  - [x] Back-end skeleton
   - [ ] Home and search JS
-  - [ ] Restroom JS
+  - [x] Restroom JS
   - [ ] Login JS
