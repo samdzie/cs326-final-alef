@@ -6,6 +6,9 @@ let http = require('http');
 let url = require('url');
 let express = require('express');
 
+const MIN_ID = 100000000;
+const MAX_ID = 999999999;
+
 export class MyServer {
 
     private theDatabase;
@@ -103,7 +106,7 @@ export class MyServer {
     }
 
     private async updateHandler(request, response) : Promise<void> {
-		await this.updateRestroom(request.body.id, response);
+		await this.updateRestroom(request.body.id, request.body.restroom, response);
 	// await this.updateCounter(request.params['userId']+"-"+request.body.name, request.body.value, response);
     }
 
@@ -122,26 +125,28 @@ export class MyServer {
 	
 	public async createRestroom(response) : Promise<void> {
 		console.log(`received create request`);
+		let newID = this.generateNewID();
 		response.write(JSON.stringify({
 			"result" : "created",
-			"id" : this.restroom.id
+			"id" : newID
 		}));
 		response.end();
 	}
 
 	public async readRestroom(id: number, response) : Promise<void> {
 		console.log(`received read request for restroom ${id}`);
+		let restroom = await this.theDatabase.get(id);
 		response.write(JSON.stringify({
 			"result" : "read",
-			"id" : this.restroom.id,
-			"restroom" : JSON.stringify(this.restroom)
+			"id" : id,
+			"restroom" : JSON.stringify(restroom)
 		}));
 		response.end();
 	}
 
-	public async updateRestroom(id: number, response) {
+	public async updateRestroom(id: number, restroom: Restroom, response) {
 		console.log(`received update request for restroom ${id}`);
-		await this.theDatabase.put(id, this.restroom);
+		await this.theDatabase.put(id, restroom);
 		response.write(JSON.stringify({
 			"result" : "updated",
 			"id" : this.restroom.id
@@ -151,6 +156,7 @@ export class MyServer {
 
 	public async deleteRestroom(id: number, response) {
 		console.log(`received delete request for restroom ${id}`);
+		await this.theDatabase.del(id);
 		response.write(JSON.stringify({
 			"result" : "deleted",
 			"id" : this.restroom.id
@@ -166,6 +172,11 @@ export class MyServer {
 			"restroom" : JSON.stringify(this.restroom)
 		}));
 		response.end();
+	}
+
+	private generateNewID(): number {
+		let result = Math.floor(Math.random() * Math.floor(MAX_ID - MIN_ID + 1)) + MIN_ID;
+		return result;
 	}
 }
 
