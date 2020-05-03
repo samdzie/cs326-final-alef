@@ -44,6 +44,7 @@ export class MyServer {
 		this.router.post('/update', [this.errorHandler.bind(this), this.updateHandler.bind(this)]);
 		this.router.post('/delete', [this.errorHandler.bind(this), this.deleteHandler.bind(this)]);
 		this.router.post('/search', [this.errorHandler.bind(this), this.searchHandler.bind(this)]);
+		this.router.post('/getall', [this.errorHandler.bind(this), this.getAllHandler.bind(this)]);
 
 		// Set a fall-through handler if nothing matches.
 		this.router.post('*', async (request, response) => {
@@ -85,7 +86,11 @@ export class MyServer {
 	
     private async searchHandler(request, response): Promise<void> {
 		await this.searchRestrooms(request.body.id, response);
-    }
+	}
+	
+	private async getAllHandler(request, response): Promise<void> {
+		await this.getAllRestrooms(response);
+	}
 	
 	public async createRestroom(response) : Promise<void> {
 		console.log(`received create request`);
@@ -135,6 +140,19 @@ export class MyServer {
 			"result" : "found", //when implemented this would return multiple objects
 			"id" : id,
 			"restroom" : JSON.stringify(restroom)
+		}));
+		response.end();
+	}
+
+	public async getAllRestrooms(response): Promise<void> {
+		console.log("received request for all restrooms...");
+		let usedIDs = await this.metadata.get(USED_ID_KEY);
+		if (!usedIDs) {
+			usedIDs = [];
+		}
+		response.write(JSON.stringify({
+			"result" : "fetched all",
+			"list" : usedIDs
 		}));
 		response.end();
 	}
