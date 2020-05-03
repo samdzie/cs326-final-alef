@@ -4,6 +4,7 @@ let express = require('express');
 
 const MIN_ID = 100000000;
 const MAX_ID = 999999999;
+const USED_ID_KEY = "usedIDs";
 
 export class MyServer {
 
@@ -85,7 +86,7 @@ export class MyServer {
 	
 	public async createRestroom(response) : Promise<void> {
 		console.log(`received create request`);
-		let newID = this.generateNewID();
+		let newID = await this.generateNewID();
 		response.write(JSON.stringify({
 			"result" : "created",
 			"id" : newID
@@ -135,8 +136,20 @@ export class MyServer {
 		response.end();
 	}
 
-	private generateNewID(): number {
-		let result = Math.floor(Math.random() * Math.floor(MAX_ID - MIN_ID + 1)) + MIN_ID;
+	private async generateNewID(): Promise<number> {
+		let usedIDs = await this.database.get(USED_ID_KEY);
+		if (!usedIDs) {
+			usedIDs = [];
+		}
+		if (usedIDs.length >= MAX_ID - MIN_ID + 1) {
+			throw new Error("reached maximum number of unique IDs");
+		}
+		let result: number;
+		do {
+			result = Math.floor(Math.random() * Math.floor(MAX_ID - MIN_ID + 1)) + MIN_ID;
+		} while (usedIDs.indexOf(result) !== -1)
+		usedIDs.push(result);
+		await this.database.put(USED_ID_KEY, usedIDs);
 		return result;
 	}
 }
