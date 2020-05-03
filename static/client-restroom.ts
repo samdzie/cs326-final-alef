@@ -160,7 +160,7 @@ export function restroomRead() {
                     let contents = comments[i].content;
                     let commentDiv = createCommentElement(username, contents);
                     let commentSection = document.getElementById("commentSection");
-                    if (commentSection) { commentSection.appendChild(commentDiv); }
+                    if (commentSection && contents !== "") { commentSection.appendChild(commentDiv); }
                 }
             }
         }
@@ -207,7 +207,7 @@ export function restroomUpdate() {
         if (lockElement) { lock = lockElement.checked; }
         if (changingElement) { changing = changingElement.checked; }
         if (coversElement) { covers = coversElement.checked; }
-        if (commentContentElement) { commentContent = commentContentElement.value; }
+        if (commentContentElement) { commentContent = commentContentElement.value.trim(); }
 
         // data validation
         if (rating === 0 || cleanliness === 0 || traffic === 0) {

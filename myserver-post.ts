@@ -1,18 +1,22 @@
 import { Restroom } from './classes/restroom';
+import { Database } from './mongo-database';
 
 let express = require('express');
 
 const MIN_ID = 100000000;
 const MAX_ID = 999999999;
+const USED_ID_KEY = "usedIDs";
 
 export class MyServer {
 
-    private database;
+	private database;
+	private metadata;
     private server = express();
 	private router = express.Router();
 
     constructor(db) {
 		this.database = db;
+		this.metadata = new Database("metadata");
 
 		// from https://enable-cors.org/server_expressjs.html
 		this.router.use((request, response, next) => {
@@ -40,6 +44,7 @@ export class MyServer {
 		this.router.post('/update', [this.errorHandler.bind(this), this.updateHandler.bind(this)]);
 		this.router.post('/delete', [this.errorHandler.bind(this), this.deleteHandler.bind(this)]);
 		this.router.post('/search', [this.errorHandler.bind(this), this.searchHandler.bind(this)]);
+		this.router.post('/getall', [this.errorHandler.bind(this), this.getAllHandler.bind(this)]);
 
 		// Set a fall-through handler if nothing matches.
 		this.router.post('*', async (request, response) => {
@@ -81,11 +86,16 @@ export class MyServer {
 	
     private async searchHandler(request, response): Promise<void> {
 		await this.searchRestrooms(request.body.id, response);
-    }
+	}
+	
+	private async getAllHandler(request, response): Promise<void> {
+		await this.getAllRestrooms(response);
+	}
 	
 	public async createRestroom(response) : Promise<void> {
 		console.log(`received create request`);
-		let newID = this.generateNewID();
+		let newID = await this.generateNewID();
+		await this.database.put(newID, new Restroom(newID));
 		response.write(JSON.stringify({
 			"result" : "created",
 			"id" : newID
@@ -117,6 +127,12 @@ export class MyServer {
 	public async deleteRestroom(id: number, response) {
 		console.log(`received delete request for restroom ${id}`);
 		await this.database.del(id);
+		let usedIDs = await this.metadata.get(USED_ID_KEY);
+		if (!usedIDs) {
+			usedIDs = [];
+		}
+		usedIDs.splice(usedIDs.indexOf(id), 1);
+		await this.metadata.put(USED_ID_KEY, usedIDs);
 		response.write(JSON.stringify({
 			"result" : "deleted",
 			"id" : id
@@ -135,8 +151,33 @@ export class MyServer {
 		response.end();
 	}
 
-	private generateNewID(): number {
-		let result = Math.floor(Math.random() * Math.floor(MAX_ID - MIN_ID + 1)) + MIN_ID;
+	public async getAllRestrooms(response): Promise<void> {
+		console.log("received request for all restrooms...");
+		let usedIDs = await this.metadata.get(USED_ID_KEY);
+		if (!usedIDs) {
+			usedIDs = [];
+		}
+		response.write(JSON.stringify({
+			"result" : "fetched all",
+			"list" : usedIDs
+		}));
+		response.end();
+	}
+
+	private async generateNewID(): Promise<number> {
+		let usedIDs = await this.metadata.get(USED_ID_KEY);
+		if (!usedIDs) {
+			usedIDs = [];
+		}
+		if (usedIDs.length >= MAX_ID - MIN_ID + 1) {
+			throw new Error("reached maximum number of unique IDs");
+		}
+		let result: number;
+		do {
+			result = Math.floor(Math.random() * Math.floor(MAX_ID - MIN_ID + 1)) + MIN_ID;
+		} while (usedIDs.indexOf(result) !== -1)
+		usedIDs.push(result);
+		await this.metadata.put(USED_ID_KEY, usedIDs);
 		return result;
 	}
 }

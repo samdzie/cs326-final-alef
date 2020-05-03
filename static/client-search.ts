@@ -3,8 +3,9 @@ import { Comment, CommentSection } from '../classes/comments';
 import { User } from '../classes/user';
 
 // const url: string = "http://127.0.0.1:8080";
-const url: string = "boiling-lake-26129.herokuapp.com";
-const postURL: string = url + "/home";
+// const url: string = "boiling-lake-26129.herokuapp.com";
+const url: string = process.env.URL || "http://127.0.0.1:8080";
+const postURL: string = url + "/restroom";
 const fullstar: string = "&#9733;";
 const blankstar: string = "&#9734;";
 
@@ -12,6 +13,33 @@ let target: Restroom;
 let rating: number = 0;
 let cleanliness: number = 0;
 let traffic: number = 0;
+
+console.log("started");
+(async () => {
+    // send POST request
+    const data = {};
+    const newURL = postURL + "/getall";
+    console.log(`getall: fetching ${newURL}`);
+    const response = await(postData(newURL, data));
+    const j = await response.json();
+    console.log(j);
+    if (j.list) {
+        let list = j.list;
+        for (let i = 0; i < list.length; i++) {
+            let id = list[i];
+            let results = document.getElementById("results");
+            if (results) {
+                let p = document.createElement("p");
+                let a = document.createElement("a");
+                a.setAttribute("href", "/restroom?id="+id);
+                let idText = document.createTextNode(id);
+                a.appendChild(idText);
+                p.appendChild(a);
+                results.appendChild(p);
+            }
+        }
+    }
+})();
 
 
 // helper function from lecture 21 exercise
@@ -121,3 +149,4 @@ export function search() {
         //using a lot of html.innerelement and outerelement baiscally
         //linking to index.html
  
+
