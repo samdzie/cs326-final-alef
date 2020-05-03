@@ -95,6 +95,7 @@ export class MyServer {
 	public async createRestroom(response) : Promise<void> {
 		console.log(`received create request`);
 		let newID = await this.generateNewID();
+		await this.database.put(newID, new Restroom(newID));
 		response.write(JSON.stringify({
 			"result" : "created",
 			"id" : newID
