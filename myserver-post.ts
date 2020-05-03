@@ -127,6 +127,12 @@ export class MyServer {
 	public async deleteRestroom(id: number, response) {
 		console.log(`received delete request for restroom ${id}`);
 		await this.database.del(id);
+		let usedIDs = await this.metadata.get(USED_ID_KEY);
+		if (!usedIDs) {
+			usedIDs = [];
+		}
+		usedIDs.splice(usedIDs.indexOf(id), 1);
+		await this.metadata.put(USED_ID_KEY, usedIDs);
 		response.write(JSON.stringify({
 			"result" : "deleted",
 			"id" : id
