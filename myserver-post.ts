@@ -1,4 +1,5 @@
 import { Restroom } from './classes/restroom';
+import { Database } from './mongo-database';
 
 let express = require('express');
 
@@ -8,12 +9,14 @@ const USED_ID_KEY = "usedIDs";
 
 export class MyServer {
 
-    private database;
+	private database;
+	private metadata;
     private server = express();
 	private router = express.Router();
 
     constructor(db) {
 		this.database = db;
+		this.metadata = new Database("metadata");
 
 		// from https://enable-cors.org/server_expressjs.html
 		this.router.use((request, response, next) => {
@@ -137,7 +140,7 @@ export class MyServer {
 	}
 
 	private async generateNewID(): Promise<number> {
-		let usedIDs = await this.database.get(USED_ID_KEY);
+		let usedIDs = await this.metadata.get(USED_ID_KEY);
 		if (!usedIDs) {
 			usedIDs = [];
 		}
@@ -149,7 +152,7 @@ export class MyServer {
 			result = Math.floor(Math.random() * Math.floor(MAX_ID - MIN_ID + 1)) + MIN_ID;
 		} while (usedIDs.indexOf(result) !== -1)
 		usedIDs.push(result);
-		await this.database.put(USED_ID_KEY, usedIDs);
+		await this.metadata.put(USED_ID_KEY, usedIDs);
 		return result;
 	}
 }
