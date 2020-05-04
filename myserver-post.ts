@@ -38,7 +38,6 @@ export class MyServer {
 
 		// Set a single handler for a route.
 		this.router.post('/create', this.createHandler.bind(this));
-
 		// Set multiple handlers for a route, in sequence.
 		this.router.post('/read', [this.errorHandler.bind(this), this.readHandler.bind(this)]);
 		this.router.post('/update', [this.errorHandler.bind(this), this.updateHandler.bind(this)]);
@@ -52,6 +51,7 @@ export class MyServer {
 		});
 		// Start up the restroom endpoint at '/restroom'.
 		this.server.use('/restroom', this.router);
+
     }
 
     public listen(port) : void  {
@@ -70,6 +70,7 @@ export class MyServer {
     }
     
     private async createHandler(request, response) : Promise<void> {
+		console.log("checkin 166");
 		await this.createRestroom(response);
     }
 

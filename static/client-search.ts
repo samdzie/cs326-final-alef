@@ -4,16 +4,17 @@ import { User } from '../classes/user';
 
 // const url: string = "http://127.0.0.1:8080";
 // const url: string = "boiling-lake-26129.herokuapp.com";
-const url: string = process.env.URL || "http://127.0.0.1:8080";
-const postURL: string = url + "/restroom";
+const url: string = "localhost:8080"; //process.env.URL ||
+const postURL: string = url;
 const fullstar: string = "&#9733;";
 const blankstar: string = "&#9734;";
 
-let target: Restroom; //the type of restroom(s) we would ideally find
+let target: Restroom; //this object will store all the features desired/ defined by the user 
 let rating: number = 0;
 let cleanliness: number = 0;
 let traffic: number = 0;
 
+/**  not sure what the below function does??
 (async () => {
     // send POST request
     const data = {};
@@ -39,7 +40,7 @@ let traffic: number = 0;
         }
     }
 })();
-
+*/
 
 console.log("started client-search");
 
@@ -137,9 +138,6 @@ export function search() {
             console.log('<div class="row"><div class="col-md-5 col-sm-12" class="result-container-image"><img src="' + restrooms[i].image + '" class="img-fluid"/></div><div class="col-md-7 col-sm-12" class="result-container-text"><h3><a href="http://127.0.0.1:8080/restroom?id=' + restrooms[i].id + '">' + restrooms[i].name + '</a></h3><p>' + restrooms[i].description + '</p></div></div><br/>');
             resultElement.insertAdjacentHTML("beforeend",'<div class="row"><div class="col-md-5 col-sm-12" class="result-container-image"><img src="' + restrooms[i].image + '" class="img-fluid"/></div><div class="col-md-7 col-sm-12" class="result-container-text"><h3><a href="http://127.0.0.1:8080/restroom?id=' + restrooms[i].id + '">' + restrooms[i].name + '</a></h3><p>' + restrooms[i].description + '</p></div></div><br/>');
         }
-
-
-
 
 
     })();
