@@ -2,7 +2,7 @@ import { Features, Restroom } from '../classes/restroom';
 import { Comment, CommentSection } from '../classes/comments';
 import { User } from '../classes/user';
 
-const url: string = process.env.URL || "http://127.0.0.1:8080";
+const url: string = window.location.origin;
 const postURL: string = url + "/restroom";
 const fullstar: string = "&#9733;";
 const blankstar: string = "&#9734;";
