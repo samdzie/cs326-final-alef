@@ -7,7 +7,7 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" crossorigin="anonymous">
         <link rel="stylesheet" href="style.css">
-        <script src="client-search.js"></script>
+        <!--<script src="client-search.ts"></script>-->
 
     </head>
     <body>
@@ -87,7 +87,7 @@
                             </div>
                         </div>
 
-                        <button type="button" onclick="search()" class="btn btn-primary">Search</button>
+                        <a href="/search" class="btn btn-primary">Search</a>
                     </form>
                 </div>
                 <div class="col-xl"></div>
@@ -118,6 +118,6 @@
             $('#results').html(addResult(image, title, text, ""));
             $('#results').html(addResult(image, title, text, ""));
         </script>
-        <script src="client-search-main.js"></script>
+        <script src="client-search.ts"></script>
     </body>
 </html>

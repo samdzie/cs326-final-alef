@@ -14,9 +14,9 @@ export class MyServer {
     private server = express();
 	private router = express.Router();
 
-    constructor(db) {
-		this.database = db;
-		this.metadata = new Database("metadata");
+    constructor() {
+		//this.database = db;
+		//this.metadata = new Database("metadata");
 
 		// from https://enable-cors.org/server_expressjs.html
 		this.router.use((request, response, next) => {
@@ -31,7 +31,7 @@ export class MyServer {
 		this.server.use('/login', express.static('./static/login.html'));
 		this.server.use('/restroom', express.static('./static/restroom.html'));
 		this.server.use('/update', express.static('./static/update.html'));
-		this.server.use('/search', express.static('./static/index.html'));
+		this.server.use('/search', express.static('./static/restroom.html'));  //need to work on this
 
 		// handle POST in JSON format
 		this.server.use(express.json());
@@ -59,6 +59,7 @@ export class MyServer {
 	}
 
     private async errorHandler(request, response, next) : Promise<void> {
+		console.log("tried so hard");
 		let value = true;
 		if (!value) {
 			response.write(JSON.stringify({'result' : 'error'}));
@@ -85,6 +86,7 @@ export class MyServer {
 	}
 	
     private async searchHandler(request, response): Promise<void> {
+		console.log("got so far");
 		await this.searchRestrooms(request.body.id, response);
 	}
 	
