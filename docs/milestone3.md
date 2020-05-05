@@ -26,6 +26,6 @@ metadata document
 ```
 
 # Division of Labor
-- Ankita
+- Ankita - search/filter functionality
 - Raymond - Google map API
 - Sam - MongoDB configuration, back-end CRUD for restroom entries
