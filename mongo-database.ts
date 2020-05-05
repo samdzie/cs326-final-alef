@@ -14,7 +14,7 @@ if (!process.env.USERNAME) {
 export class Database {
 	
 	private MongoClient = require('mongodb').MongoClient;
-    private uri = "mongodb+srv://guest:guest@cluster0-y0tyl.mongodb.net/test?retryWrites=true&w=majority";
+    private uri = "mongodb+srv://"+username+":"+password+"@cs326-final-alef-wscmn.mongodb.net/test?retryWrites=true&w=majority";
     private client;
     private collectionName : string;
     private dbName : string = "main";

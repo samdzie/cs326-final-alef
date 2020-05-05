@@ -14,9 +14,9 @@ export class MyServer {
     private server = express();
 	private router = express.Router();
 
-    constructor() {
-		//this.database = db;
-		//this.metadata = new Database("metadata");
+    constructor(db) {
+		this.database = db;
+		this.metadata = new Database("metadata");
 
 		// from https://enable-cors.org/server_expressjs.html
 		this.router.use((request, response, next) => {
@@ -70,7 +70,6 @@ export class MyServer {
     }
     
     private async createHandler(request, response) : Promise<void> {
-		console.log("checkin 166");
 		await this.createRestroom(response);
     }
 
