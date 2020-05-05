@@ -27,5 +27,5 @@ metadata document
 
 # Division of Labor
 - Ankita
-- Raymond
+- Raymond - Google map API
 - Sam - MongoDB configuration, back-end CRUD for restroom entries
