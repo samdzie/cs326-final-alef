@@ -1,5 +1,6 @@
 # UMass Restroom Tracker
 A web app to record and look up accessible restrooms at UMass Amherst. Developed as a final project for [CS 326: Web Programming](http://web-programming.org/) in Spring 2020, taught by [Professor Emery Berger](https://emeryberger.com/).
+The app is live [here](http://boiling-lake-26129.herokuapp.com/).
 
 ## Contributors
 * Sam Dziewietin ([@samdzie](https://github.com/samdzie))
