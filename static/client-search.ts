@@ -14,36 +14,6 @@ let rating: number = 0;
 let cleanliness: number = 0;
 let traffic: number = 0;
 
-/**  not sure what the below function does??
-(async () => {
-    // send POST request
-    const data = {};
-    const newURL = postURL + "/getall";
-    console.log(`getall: fetching ${newURL}`);
-    const response = await(postData(newURL, data));
-    const j = await response.json();
-    console.log(j);
-    if (j.list) {
-        let list = j.list;
-        for (let i = 0; i < list.length; i++) {
-            let id = list[i];
-            let results = document.getElementById("results");
-            if (results) {
-                let p = document.createElement("p");
-                let a = document.createElement("a");
-                a.setAttribute("href", "/restroom?id="+id);
-                let idText = document.createTextNode(id);
-                a.appendChild(idText);
-                p.appendChild(a);
-                results.appendChild(p);
-            }
-        }
-    }
-})();
-*/
-
-console.log("started client-search");
-
 // helper function from lecture 21 exercise
 async function postData(url: string, data: Object) {
     const resp = await fetch(url, {
@@ -60,11 +30,10 @@ async function postData(url: string, data: Object) {
     return resp;
 }
 
-
+console.log("started client-search");
 
 export function search() {
     (async () => {
-
         //read things from the html
         let buildingElement = document.getElementById("building") as HTMLInputElement;
         let genderElement = document.getElementById("gender") as HTMLInputElement;
@@ -76,7 +45,6 @@ export function search() {
         let coversElement = document.getElementById("covers") as HTMLInputElement;
         let sanitaryElement = document.getElementById("sanitary") as HTMLInputElement;
         let lockElement = document.getElementById("lock") as HTMLInputElement;
-
         //target is initalized as a restroom object with dummy ID 123
         /*if an element of target is not set to its default, then the server
         will use it as one of the search params**/
@@ -122,7 +90,39 @@ export function search() {
         const data = {
             "restroom" : target
         };
+
         const newURL = postURL + "/search";
+        console.log(`getall+ search: fetching ${newURL}`);
+        const response = await(postData(newURL, data));
+        const j = await response.json();
+        console.log(j);
+        if (j.list) {
+            let list = j.list;
+            for (let i = 0; i < list.length; i++) {
+                let id = list[i];
+                let results = document.getElementById("results");
+                if (results) {
+                    let p = document.createElement("p");
+                    let a = document.createElement("a");
+                    a.setAttribute("href", "/restroom?id="+id);
+                    let idText = document.createTextNode(id);
+                    a.appendChild(idText);
+                    p.appendChild(a);
+                    results.appendChild(p);
+                }
+            }
+        }
+    })();
+}
+
+
+
+/** 
+
+export function search() {
+    (async () => {
+
+                const newURL = postURL + "/search";
         console.log(`searching: fetching ${newURL}`);
         const response = await(postData(newURL, data));
         const j = await response.json();
@@ -142,5 +142,6 @@ export function search() {
 
     })();
 }
+*/
 
 

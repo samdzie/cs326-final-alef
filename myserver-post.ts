@@ -43,7 +43,7 @@ export class MyServer {
 		this.router.post('/update', [this.errorHandler.bind(this), this.updateHandler.bind(this)]);
 		this.router.post('/delete', [this.errorHandler.bind(this), this.deleteHandler.bind(this)]);
 		this.router.post('/search', [this.errorHandler.bind(this), this.searchHandler.bind(this)]);
-		this.router.post('/getall', [this.errorHandler.bind(this), this.getAllHandler.bind(this)]);
+		//this.router.post('/getall', [this.errorHandler.bind(this), this.getAllHandler.bind(this)]);
 
 		// Set a fall-through handler if nothing matches.
 		this.router.post('*', async (request, response) => {
