@@ -7,38 +7,10 @@ const postURL: string = url + "/restroom";
 const fullstar: string = "&#9733;";
 const blankstar: string = "&#9734;";
 
-let target: Restroom;
+let target: Restroom; //this object will store all the features desired/ defined by the user 
 let rating: number = 0;
 let cleanliness: number = 0;
 let traffic: number = 0;
-
-console.log("started");
-(async () => {
-    // send POST request
-    const data = {};
-    const newURL = postURL + "/getall";
-    console.log(`getall: fetching ${newURL}`);
-    const response = await(postData(newURL, data));
-    const j = await response.json();
-    console.log(j);
-    if (j.list) {
-        let list = j.list;
-        for (let i = 0; i < list.length; i++) {
-            let id = list[i];
-            let results = document.getElementById("results");
-            if (results) {
-                let p = document.createElement("p");
-                let a = document.createElement("a");
-                a.setAttribute("href", "/restroom?id="+id);
-                let idText = document.createTextNode(id);
-                a.appendChild(idText);
-                p.appendChild(a);
-                results.appendChild(p);
-            }
-        }
-    }
-})();
-
 
 // helper function from lecture 21 exercise
 async function postData(url: string, data: Object) {
@@ -56,11 +28,10 @@ async function postData(url: string, data: Object) {
     return resp;
 }
 
-
+console.log("started client-search");
 
 export function search() {
     (async () => {
-
         //read things from the html
         let buildingElement = document.getElementById("building") as HTMLInputElement;
         let genderElement = document.getElementById("gender") as HTMLInputElement;
@@ -72,7 +43,6 @@ export function search() {
         let coversElement = document.getElementById("covers") as HTMLInputElement;
         let sanitaryElement = document.getElementById("sanitary") as HTMLInputElement;
         let lockElement = document.getElementById("lock") as HTMLInputElement;
-
         //target is initalized as a restroom object with dummy ID 123
         /*if an element of target is not set to its default, then the server
         will use it as one of the search params**/
@@ -110,8 +80,6 @@ export function search() {
         }
         console.log("got here");
 
-        //pass them to the backend
-
         // construct Restroom object to POST
         target.name = "";
         target.description = "";
@@ -120,7 +88,39 @@ export function search() {
         const data = {
             "restroom" : target
         };
+
         const newURL = postURL + "/search";
+        console.log(`getall+ search: fetching ${newURL}`);
+        const response = await(postData(newURL, data));
+        const j = await response.json();
+        console.log(j);
+        if (j.list) {
+            let list = j.list;
+            for (let i = 0; i < list.length; i++) {
+                let id = list[i];
+                let results = document.getElementById("results");
+                if (results) {
+                    let p = document.createElement("p");
+                    let a = document.createElement("a");
+                    a.setAttribute("href", "/restroom?id="+id);
+                    let idText = document.createTextNode(id);
+                    a.appendChild(idText);
+                    p.appendChild(a);
+                    results.appendChild(p);
+                }
+            }
+        }
+    })();
+}
+
+
+
+/** 
+
+export function search() {
+    (async () => {
+
+                const newURL = postURL + "/search";
         console.log(`searching: fetching ${newURL}`);
         const response = await(postData(newURL, data));
         const j = await response.json();
@@ -129,22 +129,17 @@ export function search() {
 
         let resultElement = document.getElementById("results") as HTMLOutputElement;
 
+        // to escape characters : 
+        //" becomes &quot;
+        //' becomes &#39;
         for( let i = 0; i< restrooms.length; i++){
-            resultElement.insertAdjacentHTML("beforeend",'<div class="row"><div class="col-md-5 col-sm-12" class="result-container-image"><img src="' + restrooms[i].image + '" class="img-fluid"/></div><div class="col-md-7 col-sm-12" class="result-container-text"><h3><a href="http://127.0.0.1:8080/restroom?id='+restrooms[i].id+'">' + restrooms[i].name + '</a></h3><p>' + restrooms[i].description + '</p></div></div><br/>');
+            console.log('<div class="row"><div class="col-md-5 col-sm-12" class="result-container-image"><img src="' + restrooms[i].image + '" class="img-fluid"/></div><div class="col-md-7 col-sm-12" class="result-container-text"><h3><a href="http://127.0.0.1:8080/restroom?id=' + restrooms[i].id + '">' + restrooms[i].name + '</a></h3><p>' + restrooms[i].description + '</p></div></div><br/>');
+            resultElement.insertAdjacentHTML("beforeend",'<div class="row"><div class="col-md-5 col-sm-12" class="result-container-image"><img src="' + restrooms[i].image + '" class="img-fluid"/></div><div class="col-md-7 col-sm-12" class="result-container-text"><h3><a href="http://127.0.0.1:8080/restroom?id=' + restrooms[i].id + '">' + restrooms[i].name + '</a></h3><p>' + restrooms[i].description + '</p></div></div><br/>');
         }
-
-
-
 
 
     })();
 }
+*/
 
-
-
-        //get results from the backend
-        //post them to the html
-        //using a lot of html.innerelement and outerelement baiscally
-        //linking to index.html
- 
 

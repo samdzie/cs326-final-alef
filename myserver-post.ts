@@ -14,9 +14,9 @@ export class MyServer {
     private server = express();
 	private router = express.Router();
 
-    constructor(db) {
-		this.database = db;
-		this.metadata = new Database("metadata");
+    constructor() {
+		//this.database = db;
+		//this.metadata = new Database("metadata");
 
 		// from https://enable-cors.org/server_expressjs.html
 		this.router.use((request, response, next) => {
@@ -31,20 +31,19 @@ export class MyServer {
 		this.server.use('/login', express.static('./static/login.html'));
 		this.server.use('/restroom', express.static('./static/restroom.html'));
 		this.server.use('/update', express.static('./static/update.html'));
-		this.server.use('/search', express.static('./static/index.html'));
+		this.server.use('/search', express.static('./static/restroom.html'));  //need to work on this
 
 		// handle POST in JSON format
 		this.server.use(express.json());
 
 		// Set a single handler for a route.
 		this.router.post('/create', this.createHandler.bind(this));
-
 		// Set multiple handlers for a route, in sequence.
 		this.router.post('/read', [this.errorHandler.bind(this), this.readHandler.bind(this)]);
 		this.router.post('/update', [this.errorHandler.bind(this), this.updateHandler.bind(this)]);
 		this.router.post('/delete', [this.errorHandler.bind(this), this.deleteHandler.bind(this)]);
 		this.router.post('/search', [this.errorHandler.bind(this), this.searchHandler.bind(this)]);
-		this.router.post('/getall', [this.errorHandler.bind(this), this.getAllHandler.bind(this)]);
+		//this.router.post('/getall', [this.errorHandler.bind(this), this.getAllHandler.bind(this)]);
 
 		// Set a fall-through handler if nothing matches.
 		this.router.post('*', async (request, response) => {
@@ -52,6 +51,7 @@ export class MyServer {
 		});
 		// Start up the restroom endpoint at '/restroom'.
 		this.server.use('/restroom', this.router);
+
     }
 
     public listen(port) : void  {
@@ -59,6 +59,7 @@ export class MyServer {
 	}
 
     private async errorHandler(request, response, next) : Promise<void> {
+		console.log("tried so hard");
 		let value = true;
 		if (!value) {
 			response.write(JSON.stringify({'result' : 'error'}));
@@ -69,6 +70,7 @@ export class MyServer {
     }
     
     private async createHandler(request, response) : Promise<void> {
+		console.log("checkin 166");
 		await this.createRestroom(response);
     }
 
@@ -85,6 +87,7 @@ export class MyServer {
 	}
 	
     private async searchHandler(request, response): Promise<void> {
+		console.log("got so far");
 		await this.searchRestrooms(request.body.id, response);
 	}
 	
