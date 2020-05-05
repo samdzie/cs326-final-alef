@@ -1,6 +1,15 @@
-//const secrets = require("./secrets.json");
-//const username: string = process.env.USERNAME || secrets.MongoDB.username;
-//const password: string = process.env.PASSWORD || secrets.MongoDB.password;
+let secrets;
+let username;
+let password;
+if (!process.env.USERNAME) {
+	secrets = require('./secrets.json');
+	username = secrets.MongoDB.username;
+	password = secrets.MongoDB.password;
+} else {
+	username = process.env.USERNAME;
+	password = process.env.PASSWORD;
+}
+
 
 export class Database {
 	

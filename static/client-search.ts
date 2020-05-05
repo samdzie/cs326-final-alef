@@ -2,10 +2,8 @@ import { Features, Restroom } from '../classes/restroom';
 import { Comment, CommentSection } from '../classes/comments';
 import { User } from '../classes/user';
 
-// const url: string = "http://127.0.0.1:8080";
-// const url: string = "boiling-lake-26129.herokuapp.com";
-const url: string = "localhost:8080"; //process.env.URL ||
-const postURL: string = url;
+const url: string = window.location.origin;
+const postURL: string = url + "/restroom";
 const fullstar: string = "&#9733;";
 const blankstar: string = "&#9734;";
 
