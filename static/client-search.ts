@@ -12,6 +12,44 @@ let rating: number = 0;
 let cleanliness: number = 0;
 let traffic: number = 0;
 
+(async () => {
+    // send POST request
+    const data = {};
+    const newURL = postURL + "/getall";
+    console.log(`restroomRead: fetching ${newURL}`);
+    const response = await(postData(newURL, data));
+    const j = await response.json();
+    let IDs = JSON.parse(j.list);
+    console.log(IDs);
+
+    for (let i = 0; i < IDs.length; i++) {
+        let element = createLinkElement(IDs[i]);
+        let results = document.getElementById("results") as HTMLOutputElement;
+        if (results) { results.appendChild(element); }
+    }
+})();
+
+function createLinkElement(id): HTMLDivElement {
+    let p = document.createElement("p");
+    let a = document.createElement("a");
+    a.setAttribute("href", "/restroom?id="+id);
+    let idText = document.createTextNode(id);
+    a.appendChild(idText);
+    p.appendChild(a);
+
+    // let div = document.createElement("div");
+    // div.classList.add("comment");
+    // let h3 = document.createElement("h3");
+    // let usernameText = document.createTextNode(username);
+    // h3.appendChild(usernameText);
+    // let p = document.createElement("p");
+    // let commentText = document.createTextNode(contents);
+    // p.appendChild(commentText);
+    // div.appendChild(h3);
+    // div.appendChild(p);
+    return p;
+}
+
 // helper function from lecture 21 exercise
 async function postData(url: string, data: Object) {
     const resp = await fetch(url, {
