@@ -15,7 +15,7 @@ Our application is a database of bathrooms on the UMass campus, and an interface
 A final up-to-date list/table describing your application’s user interface. This should include the name of the UI view and its purpose. You should include a screenshot of each of your UI views.
 
 ## APIs
-A final up-to-date list/table describing your application’s API
+API documentation is available [here](https://docs.google.com/document/d/1c31cUi0dC66n8w7lVmq3Tw-KCG-3hsgRvamOfF9ZKB4/edit?usp=sharing).
 
 ## Database
 A final up-to-date representation of your database including a brief description of each of the entities in your data model and their relationships if any.
@@ -27,7 +27,10 @@ A final up-to-date table of all the URL routes that your application supports an
 A final up-to-date description of how users are authenticated and any permissions for specific users (if any) that you used in your application. You should mention how they relate to which UI views are accessible.
 
 ## Division of Labor
-A breakdown of the division of labor for each team member — that is, saying who did what, for the entire project. Remember that everyone is expected to contribute roughly equally to each phase of the project. We expect to see similar numbers and kinds of GitHub commits by each student.
+We divided both frontend and backend implementations based on functions. Sam implemented the creation and updating of the restroom database, Ankita worked on the searching feature, and Raymond worked on the login and google maps APIs. Overall, the contributions were :
+* Sam - index.html and its wireframe, restroom.htmland its wireframe, style.css, the repo's file structure, restroom CRUD, backend skeleton, MongoDB configuration, back-end CRUD for restroom entries
+* Ankita - login.htmland its wireframe, update.htmland its wireframe, style.css, search client and server
+* Raymond - part of index.html, found and added icons for the features, login client, Google map API
 
 ## Conclusion
 A conclusion describing your team’s experience in working on this project. This should include what you learned through the design and implementation process, the difficulties you encountered, what your team would have liked to know before starting the project that would have helped you later, and any other technical hurdles that your team encountered.
