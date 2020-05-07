@@ -11,7 +11,7 @@ let restroom: Restroom;
 let rating: number = 0;
 let cleanliness: number = 0;
 let traffic: number = 0;
-let author = new User("testuser");
+// let author = new User("testuser");
 
 // get restroom ID from URL
 // based on https://easyautotagging.com/javascript-get-url-parameter/
@@ -202,6 +202,7 @@ export async function restroomUpdate() {
     let lockElement = document.getElementById("lock") as HTMLInputElement;
     let changingElement = document.getElementById("changing") as HTMLInputElement;
     let coversElement = document.getElementById("covers") as HTMLInputElement;
+    let usernameElement = document.getElementById("username") as HTMLInputElement;
     let commentContentElement = document.getElementById("commentContent") as HTMLInputElement;
 
     // assign element values
@@ -216,6 +217,7 @@ export async function restroomUpdate() {
     let lock: boolean = false;
     let changing: boolean = false;
     let covers: boolean = false;
+    let username: string = "";
     let commentContent: string = "";
     if (nameElement) { name = nameElement.value; }
     if (descElement) { desc = descElement.value; }
@@ -228,6 +230,7 @@ export async function restroomUpdate() {
     if (lockElement) { lock = lockElement.checked; }
     if (changingElement) { changing = changingElement.checked; }
     if (coversElement) { covers = coversElement.checked; }
+    if (usernameElement) { username = usernameElement.value; }
     if (commentContentElement) { commentContent = commentContentElement.value.trim(); }
 
     // data validation
@@ -250,6 +253,7 @@ export async function restroomUpdate() {
 
     // construct CommentSection object
     let comments = restroom.comments;
+    let author = new User(username);
     let comment = new Comment(author);
     comment.content = commentContent;
     comment.rating = rating;
