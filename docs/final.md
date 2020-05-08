@@ -6,6 +6,8 @@
 ## Overview 
 Our application is a database of bathrooms on the UMass campus, and an interface for users to rate and comment about them, similar to Yelp or IMDB. It allows people to see where the nearest bathroom is and users are able to filter through bathroom requirements (such as having a changing table, being accessible to them, female product disposal, and so on). Ratings would be averaged and displayed.
 
+A current service does not currently exist for UMass. We hope to make the campus more accessible with this application, particularly for people with disabilities and trans people, as well as anyone else for whom particular features are beneficial (e.g., changing table, sanitary products).
+
 ## Team Members
 * Sam Dziewietin (@samdzie)
 * Ankita Kumar (@Ankita-Kumar)
