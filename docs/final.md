@@ -34,9 +34,6 @@ A final up-to-date representation of your database including a brief description
 ## URL Routes/Mappings
 A final up-to-date table of all the URL routes that your application supports and a short description of what those routes are used for. You should also indicate any authentication and permissions on those routes.
 
-## Authentication/Authorization
-A final up-to-date description of how users are authenticated and any permissions for specific users (if any) that you used in your application. You should mention how they relate to which UI views are accessible.
-
 ## Division of Labor
 We divided both frontend and backend implementations based on functions. Sam implemented the creation and updating of the restroom database, Ankita worked on the searching feature, and Raymond worked on the login and google maps APIs. Overall, the contributions were :
 * Sam - index.html and its wireframe, restroom.html and its wireframe, style.css, the repo's file structure, restroom CRUD, backend skeleton, MongoDB configuration, back-end CRUD for restroom entries
